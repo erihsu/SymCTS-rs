@@ -9,6 +9,10 @@ use std::rc::Rc;
 use std::rc::Weak;
 use libloading::Library;
 use rand::Rng;
+
+mod merge;
+use merge::MergeUnit;
+
 enum MyError {
     IOErr,
     BNPErr,
@@ -25,6 +29,7 @@ pub struct ClockTree {
     y_range:(i32,i32),
     sinks: Vec<Sink>,
     buffers: Vec<Buffer>,
+    merge: Vec<MergeUnit>,
 }
 
 
@@ -106,6 +111,7 @@ impl ClockTree {
                 }
             }
         }
+        println!("branch number planning finished,result:{:?}",branchs);
         // add pseudo sinks with zero capload
         let target_num = branchs.iter().fold(0,|acc,x|acc*x);
         let pseudo_sink = target_num - n;
@@ -123,11 +129,39 @@ impl ClockTree {
 
         // sink indexing and group label pair. group label can be used later with branchs to fully
         // specify symmetry clock tree topology
+        // As a result, the grp label is in increased-order
         let grp2id :Vec<(u32,usize)> = group(&coords,&branchs);
         
         // step 3: bottom-up merge
+        let rev_branch = branchs.reverse();
+        let childs:Vec<(i32,i32)> = grp2id.iter().map(|d|{let sink self.sink[d];(sink.x,sink.y)}).collect();
+        let mut new_childs = Vec::new();
+        for (level,b) in rev_branch.iter().enumerate() {
+            for (i,s) in childs.iter().enumerate() {
+                let mut one_merge_childs = Vec::new();
+                if i%b != 0 {
+                    one_merge_childs.push(s);
+                } else {
+                    let mut one_merge_inst = MergeUnit::new();
+                    one_merge_inst.load_sink(one_merge_childs);
+                    one_merge_inst.analyze();
+                    one_merge_inst.set_level(level as u8);
+                    self.merge.push(one_merge_inst);
+                    new_childs.push(one_merge_inst.root);
+                    one_merge_childs.clear();
 
+                }
+            }
+            childs.clear();
+            childs = new_childs;
+            new_childs = clear();
+        }
+        let total_estimate_wire = self.merge.iter().fold(0,|acc,x|acc + x.estimate_length);
+        println!("pre-merge finished, estimated wirelength:{}",total_estimate_wire);
     }
+fn buffering(&mut self) {
+
+}
 }
 
 #[derive(Default)]
