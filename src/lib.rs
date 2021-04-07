@@ -1,12 +1,12 @@
 #![allow(dead_code)]
 use cts_plugin::{DesignPlugin,PdkPlugin,CTSPluginRes};
 use std::collections::{HashSet,HashMap};
-use std::cell::RefCell;
+
 
 use std::path::Path;
 use std::fs;
-use std::rc::Rc;
-use std::rc::Weak;
+
+
 use libloading::Library;
 use rand::Rng;
 
@@ -41,10 +41,11 @@ impl ClockTree {
         }
     }
 
-    fn prepare_from_def<P>(&mut self,file:P) -> CTSPluginRes<()>
+    fn run<P>(&mut self,file:P) -> CTSPluginRes<()>
     where 
         P: AsRef<Path>,
 {
+    // prepare data from def
     let cts_lib = Library::new("").expect("load library");
     let new_design_plugin : libloading::Symbol<extern "Rust" fn () -> Box<dyn DesignPlugin> > = unsafe {cts_lib.get(b"new_design_plugin")}.expect("load symbol");
     let adjust_pin_location : libloading::Symbol<extern "Rust" fn (i32,i32,i8) -> (i32,i32)> = unsafe {cts_lib.get(b"adjust_pin_location")}.expect("load symbol");
@@ -75,30 +76,43 @@ impl ClockTree {
         let offset_dbu = ((dbu_factor*offset_x) as i32,(dbu_factor*offset_y) as i32);
         let adjust_offset_dbu = adjust_pin_location(offset_dbu.0,offset_dbu.1,orient);
         let load_cap = *sink_cap.get(&x.0).unwrap();
-        if adjust_offset_dbu.0 < x_min {
-            x_min = adjust_offset_dbu.0;
+        let sink_x = origin_x + adjust_offset_dbu.0;
+        let sink_y = origin_y + adjust_offset_dbu.1;
+        if sink_x < x_min {
+            x_min = sink_x;
         }
-        if adjust_offset_dbu.0 > x_max {
-            x_max = adjust_offset_dbu.0;
+        if sink_x > x_max {
+            x_max = sink_x;
         }
-        if adjust_offset_dbu.1 < y_min {
-            y_min = adjust_offset_dbu.1
+        if sink_y < y_min {
+            y_min = sink_y;
         }
-        if adjust_offset_dbu.1 > y_max {
-            y_max = adjust_offset_dbu.1
+        if sink_y > y_max {
+            y_max = sink_y;
         }
         Sink{
             name:x.0.to_string(),
-            x:adjust_offset_dbu.0,
-            y:adjust_offset_dbu.1,
+            x:sink_x,
+            y:sink_y,
             load_cap,
         }
     }).collect();
     self.x_range = (x_min,x_max);
     self.y_range = (y_min,y_max);
+    println!("Load CTS related data successfully");
+    // generate topology
+    self.gen_topology();
+
+    // my_design.
+
+    // export def
+
+
+
     Ok(())
 }
     fn gen_topology(&mut self) {
+        println!("Start generate topology");
         // step 1: bnp and insert pseudo sink
         let mut branchs = vec![];
         let mut n = self.sinks.len() as u32;
@@ -127,41 +141,60 @@ impl ClockTree {
         // step 2 : top-down parition
         let coords:Vec<(i32,i32)> = self.sinks.iter().map(|s|(s.x,s.y)).collect();
 
-        // sink indexing and group label pair. group label can be used later with branchs to fully
+        // group label and sink indexing pair. group label can be used later with branchs to fully
         // specify symmetry clock tree topology
         // As a result, the grp label is in increased-order
         let grp2id :Vec<(u32,usize)> = group(&coords,&branchs);
         
         // step 3: bottom-up merge
-        let rev_branch = branchs.reverse();
-        let childs:Vec<(i32,i32)> = grp2id.iter().map(|d|{let sink self.sink[d];(sink.x,sink.y)}).collect();
-        let mut new_childs = Vec::new();
-        for (level,b) in rev_branch.iter().enumerate() {
+
+        // reverse branchs to bottom-up order
+        // hashmap to store map between merge level and target wirelength 
+        let mut branch2length:HashMap<u8,u32> = HashMap::new();
+        branchs.reverse();
+        let mut childs:Vec<(i32,i32)> = grp2id.iter().map(|d|{let s = &self.sinks[d.1];(s.x,s.y)}).collect();
+        let mut new_childs:Vec<(i32,i32)> = Vec::new();
+        for (level,b) in branchs.iter().enumerate() {
+            let level = level as u8;
+            let mut target_len = u32::MIN;
             for (i,s) in childs.iter().enumerate() {
+                let i = i as u32;
                 let mut one_merge_childs = Vec::new();
-                if i%b != 0 {
-                    one_merge_childs.push(s);
+                if i%*b != 0 {
+                    one_merge_childs.push(*s);
                 } else {
                     let mut one_merge_inst = MergeUnit::new();
-                    one_merge_inst.load_sink(one_merge_childs);
-                    one_merge_inst.analyze();
-                    one_merge_inst.set_level(level as u8);
+                    one_merge_inst.load_sink(&one_merge_childs);
+                    // compare between target length
+                    if one_merge_inst.range_length() > target_len {
+                        target_len = one_merge_inst.range_length();
+                    }
+                    one_merge_inst.set_level(level);
+                    new_childs.push(one_merge_inst.root.clone());
                     self.merge.push(one_merge_inst);
-                    new_childs.push(one_merge_inst.root);
                     one_merge_childs.clear();
 
                 }
             }
+            branch2length.insert(level,target_len);
             childs.clear();
-            childs = new_childs;
-            new_childs = clear();
+            childs = new_childs.clone();
+
         }
-        let total_estimate_wire = self.merge.iter().fold(0,|acc,x|acc + x.estimate_length);
+        for m in self.merge.iter_mut() {
+            let level = m.level;
+            let target_len = *branch2length.get(&level).unwrap();
+            // mannually precision
+            if (target_len - m.range_length()) > 10 {
+                // need adjust merge range
+                m.adjust_range(target_len);
+                m.merge();
+            }
+        }
+        let total_estimate_wire = self.merge.iter().fold(0,|acc,x|acc + x.length());
         println!("pre-merge finished, estimated wirelength:{}",total_estimate_wire);
     }
-fn buffering(&mut self) {
 
-}
 }
 
 #[derive(Default)]
