@@ -40,22 +40,22 @@ impl ClockTree {
     pub fn run(&mut self, file: &str) -> CTSPluginRes<()> {
         // prepare via map and layer map
         let pdk_lib =
-            Library::new("/Users/eric/Documents/libvulcan_pdb.dylib").expect("load library");
+            Library::new("/tmp/libvulcan_pdb.so").expect("load library");
         let new_pdk_plugin: libloading::Symbol<fn() -> Box<dyn PdkPlugin>> =
             unsafe { pdk_lib.get(b"new_pdk_plugin") }.expect("load symbol");
-        println!("Load vulcan-pdb dylib successfully");
+        println!("Load vulcan-pdb so successfully");
         let mut my_pdk = new_pdk_plugin(); // read env and login
         my_pdk.login("erihsu", "xzy101469*");
         let layer_map: Vec<(i16, String)> = my_pdk.get_layer_map()?;
         let via_map: Vec<(i16, String)> = my_pdk.get_via_map()?;
 
         // prepare data from def
-        let cts_lib = Library::new("/Users/eric/Documents/libvulcan.dylib").expect("load library");
+        let cts_lib = Library::new("/tmp/libvulcan.so").expect("load library");
         let new_design_plugin: libloading::Symbol<fn() -> Box<dyn DesignPlugin>> =
             unsafe { cts_lib.get(b"new_design_plugin") }.expect("load symbol");
         let adjust_pin_location: libloading::Symbol<fn(i32, i32, i8) -> (i32, i32)> =
             unsafe { cts_lib.get(b"adjust_pin_location") }.expect("load symbol");
-        println!("Load vulcan dylib successfully");
+        println!("Load vulcan so successfully");
         let mut my_design = new_design_plugin();
         // step 1 : prepare via map and layer map before import def
         let lmap: Vec<(String, i16)> = layer_map.iter().map(|x| (x.1.clone(), x.0)).collect();
