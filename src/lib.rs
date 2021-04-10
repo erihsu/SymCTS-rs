@@ -44,8 +44,10 @@ impl ClockTree {
         let new_pdk_plugin: libloading::Symbol<fn() -> Box<dyn PdkPlugin>> =
             unsafe { pdk_lib.get(b"new_pdk_plugin") }.expect("load symbol");
         println!("Load vulcan-pdb so successfully");
-        let mut my_pdk = new_pdk_plugin(); // read env and login
-        my_pdk.login("erihsu", "xzy101469*");
+        let mut my_pdk = new_pdk_plugin(); 
+        // login with username and password
+        // !!! first replace them with your username and password
+        my_pdk.login("username", "password");
         let layer_map: Vec<(i16, String)> = my_pdk.get_layer_map()?;
         let via_map: Vec<(i16, String)> = my_pdk.get_via_map()?;
 
