@@ -120,10 +120,10 @@ impl MergeUnit {
         //           |
         //     ------------- 
         if self.if_veritcal {
-            let mut top_left_offset = i32::MAX;
-            let mut top_right_offset = i32::MIN;
-            let mut bottom_left_offset = i32::MAX;
-            let mut bottom_right_offset = i32::MIN;
+            let mut top_left_offset = self.root.0;
+            let mut top_right_offset = self.root.0;
+            let mut bottom_left_offset = self.root.0;
+            let mut bottom_right_offset = self.root.0;
             for x in &self.sink {
                                 //                              -------
                 // tap point is only exist on      |
@@ -228,10 +228,10 @@ impl MergeUnit {
         //    |                |
         //    |                |
         else {
-            let mut top_left_offset = i32::MAX;
-            let mut top_right_offset = i32::MIN;
-            let mut bottom_left_offset = i32::MAX;
-            let mut bottom_right_offset = i32::MIN;
+            let mut top_left_offset = self.root.1;
+            let mut top_right_offset = self.root.1;
+            let mut bottom_left_offset = self.root.1;
+            let mut bottom_right_offset = self.root.1;
             for x in &self.sink {
                 let mut tap_point = self.root; 
                 // first analysis

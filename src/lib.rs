@@ -66,7 +66,7 @@ impl ClockTree {
 
         println!("Read def successfully");
         let sinks: Vec<(String, (i32, i32), i8)> = my_design.get_clock_sinks(&self.name)?;
-        println!("Get sink successfully");
+        println!("Get {} sinks successfully",sinks.len());
         let mut sink_type = HashSet::new();
         sinks.iter().for_each(|x| {
             sink_type.insert(x.0.to_string());
@@ -75,10 +75,14 @@ impl ClockTree {
         let mut sink_offset: HashMap<String, (f32, f32)> = HashMap::new();
         let mut sink_cap: HashMap<String, f32> = HashMap::new();
         let dbu_factor = my_design.get_length_dbu()?;
+        println!("Get dbu successfully");
         let dbu_factor = dbu_factor as f32;
         for d in &sink_type {
+            println!("cell {}", d);
             let offset = my_pdk.get_sink_clk_pin_offset(d)?;
+            println!("get offset {:?}", offset);
             let cap = my_pdk.get_sink_cap(d)?;
+            println!("get cap {}", cap);
             sink_offset.insert(d.to_string(), offset);
             sink_cap.insert(d.to_string(), cap);
         }
@@ -146,8 +150,10 @@ impl ClockTree {
         }
         println!("branch number planning finished,result:{:?}", branchs);
         // add pseudo sinks with zero capload
-        let target_num = branchs.iter().fold(0, |acc, x| acc * x);
-        let pseudo_sink = target_num - n;
+        let target_num = branchs.iter().fold(1, |acc, x| acc * x);
+        let pseudo_sink = target_num - self.sinks.len() as u32;
+        println!("need {} pseudo sink into real sink topo", pseudo_sink);
+        if pseudo_sink != 0 {
         let mut rng = rand::thread_rng();
         for _ in 0..pseudo_sink {
             self.sinks.push(Sink {
@@ -156,10 +162,7 @@ impl ClockTree {
                 ..Default::default()
             })
         }
-        println!(
-            "expect {} sinks to get symmetrical structure, insert {} pseudo sink into {} real sink",
-            target_num, pseudo_sink, n
-        );
+        }
         // step 2 : top-down parition
         let coords: Vec<(i32, i32)> = self.sinks.iter().map(|s| (s.x, s.y)).collect();
 
@@ -167,6 +170,7 @@ impl ClockTree {
         // specify symmetry clock tree topology
         // As a result, the grp label is in increased-order
         let grp2id: Vec<(u32, usize)> = group(&coords, &branchs);
+
 
         // step 3: bottom-up merge
 
@@ -185,12 +189,10 @@ impl ClockTree {
         for (level, b) in branchs.iter().enumerate() {
             let level = level as u8;
             let mut target_len = u32::MIN;
+            let mut one_merge_childs = Vec::new();
             for (i, s) in childs.iter().enumerate() {
                 let i = i as u32;
-                let mut one_merge_childs = Vec::new();
-                if i % *b != 0 {
-                    one_merge_childs.push(*s);
-                } else {
+                if i % *b == 0 && i != 0 {
                     let mut one_merge_inst = MergeUnit::new();
                     one_merge_inst.load_sink(&one_merge_childs);
                     // compare between target length
@@ -200,13 +202,18 @@ impl ClockTree {
                     one_merge_inst.set_level(level);
                     new_childs.push(one_merge_inst.root.clone());
                     self.merge.push(one_merge_inst);
+                    // reset next iter childs
                     one_merge_childs.clear();
+
+
                 }
+                one_merge_childs.push(*s);
             }
             branch2length.insert(level, target_len);
             childs.clear();
             childs = new_childs.clone();
         }
+        println!("{:?}", branch2length);
         for m in self.merge.iter_mut() {
             let level = m.level;
             let target_len = *branch2length.get(&level).unwrap();
@@ -225,7 +232,7 @@ impl ClockTree {
     }
 }
 
-#[derive(Default)]
+#[derive(Default,Debug)]
 pub struct Sink {
     name: String, // cell name
     x: i32,
@@ -300,23 +307,26 @@ fn get_max_distance(coords: &[(i32, i32)]) -> u32 {
 
 fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
     let mut result = Vec::new();
+    let mut grps = Vec::new();
     for (i, b) in branchs.iter().enumerate() {
-        let mut grps = Vec::new();
+        
         if i == 0 {
             let idxs = (0..coords.len()).collect();
             grps = find_group(coords, (0, idxs), *b);
         } else if i < branchs.len() - 1 {
             let mut new_d = Vec::new();
-            for d in grps {
-                let next_grps = find_group(coords, d, *b);
+            for d in &grps {
+                let next_grps = find_group(coords, d.clone(), *b);
+
                 for g in next_grps {
                     new_d.push(g);
                 }
             }
             grps = new_d;
+
         } else {
-            for d in grps {
-                let next_grps = find_group(coords, d, *b);
+            for d in &grps {
+                let next_grps = find_group(coords, d.clone(), *b);
                 for v in next_grps {
                     // Vec<(u32,Vec<usize>)> become Vec<(u32,vec![usize])>
                     result.push((v.0, v.1[0]));
