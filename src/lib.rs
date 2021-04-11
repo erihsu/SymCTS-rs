@@ -39,15 +39,14 @@ impl ClockTree {
 
     pub fn run(&mut self, file: &str) -> CTSPluginRes<()> {
         // prepare via map and layer map
-        let pdk_lib =
-            Library::new("/tmp/libvulcan_pdb.so").expect("load library");
+        let pdk_lib = Library::new("/tmp/libvulcan_pdb.so").expect("load library");
         let new_pdk_plugin: libloading::Symbol<fn() -> Box<dyn PdkPlugin>> =
             unsafe { pdk_lib.get(b"new_pdk_plugin") }.expect("load symbol");
         println!("Load vulcan-pdb so successfully");
-        let mut my_pdk = new_pdk_plugin(); 
+        let mut my_pdk = new_pdk_plugin();
         // login with username and password
         // !!! first replace them with your username and password
-        my_pdk.login("username", "password");
+        my_pdk.login("erihsu", "xzy101469*");
         let layer_map: Vec<(i16, String)> = my_pdk.get_layer_map()?;
         let via_map: Vec<(i16, String)> = my_pdk.get_via_map()?;
 
@@ -68,7 +67,7 @@ impl ClockTree {
 
         println!("Read def successfully");
         let sinks: Vec<(String, (i32, i32), i8)> = my_design.get_clock_sinks(&self.name)?;
-        println!("Get {} sinks successfully",sinks.len());
+        println!("Get {} sinks successfully", sinks.len());
         let mut sink_type = HashSet::new();
         sinks.iter().for_each(|x| {
             sink_type.insert(x.0.to_string());
@@ -156,14 +155,14 @@ impl ClockTree {
         let pseudo_sink = target_num - self.sinks.len() as u32;
         println!("need {} pseudo sink into real sink topo", pseudo_sink);
         if pseudo_sink != 0 {
-        let mut rng = rand::thread_rng();
-        for _ in 0..pseudo_sink {
-            self.sinks.push(Sink {
-                x: rng.gen_range(self.x_range.0..self.x_range.1),
-                y: rng.gen_range(self.y_range.0..self.y_range.1),
-                ..Default::default()
-            })
-        }
+            let mut rng = rand::thread_rng();
+            for _ in 0..pseudo_sink {
+                self.sinks.push(Sink {
+                    x: rng.gen_range(self.x_range.0..self.x_range.1),
+                    y: rng.gen_range(self.y_range.0..self.y_range.1),
+                    ..Default::default()
+                })
+            }
         }
         // step 2 : top-down parition
         let coords: Vec<(i32, i32)> = self.sinks.iter().map(|s| (s.x, s.y)).collect();
@@ -172,7 +171,6 @@ impl ClockTree {
         // specify symmetry clock tree topology
         // As a result, the grp label is in increased-order
         let grp2id: Vec<(u32, usize)> = group(&coords, &branchs);
-
 
         // step 3: bottom-up merge
 
@@ -206,8 +204,6 @@ impl ClockTree {
                     self.merge.push(one_merge_inst);
                     // reset next iter childs
                     one_merge_childs.clear();
-
-
                 }
                 one_merge_childs.push(*s);
             }
@@ -220,7 +216,7 @@ impl ClockTree {
             let level = m.level;
             let target_len = *branch2length.get(&level).unwrap();
             // mannually precision
-            if (target_len - m.range_length()) > 10 {
+            if (target_len - m.range_length()) > 100 {
                 // need adjust merge range
                 m.adjust_range(target_len);
                 m.merge();
@@ -234,7 +230,7 @@ impl ClockTree {
     }
 }
 
-#[derive(Default,Debug)]
+#[derive(Default, Debug)]
 pub struct Sink {
     name: String, // cell name
     x: i32,
@@ -298,20 +294,35 @@ fn get_center(coords: &[(i32, i32)]) -> (i32, i32) {
 // to simplify get max distance between two farest point, just use perimeter to represent max
 // distance
 fn get_max_distance(coords: &[(i32, i32)]) -> u32 {
-    let mut dis = 0;
-    let len = coords.len();
-    for i in 0..len - 1 {
-        dis += (coords[i].0 - coords[i].1).abs() + (coords[i + 1].1 - coords[i + 1].1).abs();
+    let (mut x_min,mut x_max,mut y_min,mut y_max) = (i32::MAX,i32::MIN,i32::MAX,i32::MIN);
+    for d in coords {
+        if d.0 < x_min {
+            x_min = d.0;
+        }
+        if d.0 > x_max {
+            x_max = d.0;
+        }
+        if d.1 < y_min {
+            y_min = d.1;
+        }
+        if d.1 > y_max {
+            y_max = d.1;
+        }
     }
-    dis += (coords[len - 1].0 - coords[0].0).abs() + (coords[len - 1].1 - coords[0].1).abs();
-    dis as u32
+    ((x_max - x_min) + (y_max - y_min)) as u32
+    // let mut dis = 0;
+    // let len = coords.len();
+    // for i in 0..len - 1 {
+    //     dis += (coords[i].0 - coords[i].1).abs() + (coords[i + 1].1 - coords[i + 1].1).abs();
+    // }
+    // dis += (coords[len - 1].0 - coords[0].0).abs() + (coords[len - 1].1 - coords[0].1).abs();
+    // dis as u32
 }
 
 fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
     let mut result = Vec::new();
     let mut grps = Vec::new();
     for (i, b) in branchs.iter().enumerate() {
-        
         if i == 0 {
             let idxs = (0..coords.len()).collect();
             grps = find_group(coords, (0, idxs), *b);
@@ -325,7 +336,6 @@ fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
                 }
             }
             grps = new_d;
-
         } else {
             for d in &grps {
                 let next_grps = find_group(coords, d.clone(), *b);
