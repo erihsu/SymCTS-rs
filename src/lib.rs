@@ -1,9 +1,9 @@
 #![allow(dead_code)]
+use std::rc::Weak;
+use std::cell::RefCell;
+use std::rc::Rc;
 use cts_plugin::{CTSPluginRes, DesignPlugin, PdkPlugin};
 use std::collections::{HashMap, HashSet};
-
-use std::fs;
-use std::path::Path;
 
 use libloading::Library;
 use rand::Rng;
@@ -238,25 +238,19 @@ pub struct Sink {
     load_cap: f32,
 }
 
-// // reference https://joshondesign.com/2020/04/08/rust5_tree
-// pub struct TreeNode {
-//     pub child: RefCell<Vec<Rc<TreeNode>>>,
-//     parent: Option<Rc<Weak<TreeNode>>>,
-//     // Three types can be hold in node_data: Clock buffer(ViComponent), Sink(ViComponent),Tappoint(VdbDot)
-//     node_data: NodeData,
+// reference https://joshondesign.com/2020/04/08/rust5_tree
+pub struct TreeNode {
+    pub child: RefCell<Vec<Rc<TreeNode>>>,
+    parent: Option<Rc<Weak<TreeNode>>>,
+    // Three types can be hold in node_data: Clock buffer(ViComponent), Sink(ViComponent),Tappoint(coord)
+    node_data: NodeData,
+}
 
-//     // Sym-CTS related
-//     radius: f32, // max length in the region
-//     fanout: i32,
-//     node_cap: f32, // total load cap
-//     wires: Vec<Wire>,
-// }
-
-// pub enum NodeData {
-//     Sink(Box<Sink>),
-//     Buffer(Box<Buffer>),
-//     Dot(VdbDot),
-// }
+pub enum NodeData {
+    Sink(Box<Sink>),
+    Buffer(Box<Buffer>),
+    Dot((i32,i32)),
+}
 
 pub struct Buffer {
     buffer_name: String,
