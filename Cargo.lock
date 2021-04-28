@@ -15,7 +15,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "cts-plugin"
 version = "0.1.0"
-source = "git+https://github.com/erihsu/cts-plugin?rev=2d16200#2d16200b14f590e8df08a922b7685f1ddb76a611"
+source = "git+https://github.com/erihsu/cts-plugin?rev=3ad3781#3ad3781bc04e5f383dd004c86385e0394a254820"
 dependencies = [
  "serde_json",
 ]
@@ -129,6 +129,7 @@ dependencies = [
  "cts-plugin",
  "libloading",
  "rand",
+ "serde_json",
 ]
 
 [[package]]

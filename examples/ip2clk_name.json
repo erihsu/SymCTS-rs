@@ -1,0 +1,7 @@
+{
+	"spi":"wb_clk_i",
+	"s1238":"blif_clk_net",
+	"usb_phy":"clk",
+	"aes_core":"clk",
+	"mem_ctrl":"clk_i",
+}

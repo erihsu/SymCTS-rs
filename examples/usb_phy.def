@@ -1,0 +1,4227 @@
+# 
+# SNPS write_def
+# Release      : K-2015.06-SP5-1
+# User Name    : xuzhenyu
+# Date         : Fri Apr 16 21:32:36 2021
+# 
+VERSION 5.6 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN usb_phy ;
+TECHNOLOGY logic0040ll ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 30210 28980 ) ;
+ROW STD_ROW_23 unit 0 0 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_24 unit 0 1260 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_25 unit 0 2520 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_26 unit 0 3780 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_27 unit 0 5040 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_28 unit 0 6300 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_29 unit 0 7560 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_30 unit 0 8820 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_31 unit 0 10080 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_32 unit 0 11340 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_33 unit 0 12600 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_34 unit 0 13860 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_35 unit 0 15120 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_36 unit 0 16380 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_37 unit 0 17640 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_38 unit 0 18900 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_39 unit 0 20160 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_40 unit 0 21420 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_41 unit 0 22680 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_42 unit 0 23940 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_43 unit 0 25200 N DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_44 unit 0 26460 FS DO 159 BY 1 STEP 190 0 ;
+ROW STD_ROW_45 unit 0 27720 N DO 159 BY 1 STEP 190 0 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M1 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M2 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M2 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M1 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M3 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M3 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M2 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M4 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M4 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M3 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M5 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M5 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M4 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M6 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M6 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M5 ;
+TRACKS Y 70 DO 207 STEP 140 LAYER M7 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M7 ;
+TRACKS X 70 DO 215 STEP 140 LAYER M6 ;
+TRACKS X 70 DO 215 STEP 140 LAYER TM2 ;
+TRACKS Y 420 DO 34 STEP 840 LAYER TM2 ;
+TRACKS Y 420 DO 34 STEP 840 LAYER M7 ;
+TRACKS Y 420 DO 34 STEP 840 LAYER ALPA ;
+TRACKS X 10310 DO 2 STEP 8000 LAYER ALPA ;
+TRACKS X 10310 DO 2 STEP 8000 LAYER TM2 ;
+GCELLGRID X -1260 DO 24 STEP 1260 ;
+GCELLGRID Y -1260 DO 24 STEP 1260 ;
+COMPONENTS 410 ;
+ - U66 INV_X0P5B_A9TL40 + PLACED ( 17290 1260 ) S ;
+ - U65 INV_X0P5B_A9TL40 + PLACED ( 19760 0 ) N ;
+ - U64 INV_X0P5B_A9TL40 + PLACED ( 20140 0 ) N ;
+ - U63 BUFH_X1M_A9TL40 + PLACED ( 25080 0 ) N ;
+ - U62 INV_X0P5B_A9TL40 + PLACED ( 16340 27720 ) N ;
+ - U61 INV_X0P5B_A9TL40 + PLACED ( 14250 25200 ) N ;
+ - U60 INV_X0P5B_A9TL40 + PLACED ( 4370 26460 ) S ;
+ - U59 INV_X0P5B_A9TL40 + PLACED ( 5510 26460 ) S ;
+ - U58 INV_X0P5B_A9TL40 + PLACED ( 7980 26460 ) FS ;
+ - U57 INV_X0P5B_A9TL40 + PLACED ( 9120 26460 ) S ;
+ - U56 INV_X0P5B_A9TL40 + PLACED ( 17100 27720 ) FN ;
+ - U55 INV_X0P5B_A9TL40 + PLACED ( 18620 26460 ) S ;
+ - U54 INV_X0P5B_A9TL40 + PLACED ( 13870 26460 ) FS ;
+ - U53 INV_X0P5B_A9TL40 + PLACED ( 13110 26460 ) FS ;
+ - U52 INV_X0P5B_A9TL40 + PLACED ( 4750 26460 ) FS ;
+ - U51 INV_X0P5B_A9TL40 + PLACED ( 5130 26460 ) S ;
+ - U50 INV_X0P5B_A9TL40 + PLACED ( 8360 26460 ) FS ;
+ - U49 INV_X0P5B_A9TL40 + PLACED ( 8740 26460 ) S ;
+ - U48 INV_X0P5B_A9TL40 + PLACED ( 11210 26460 ) S ;
+ - U47 INV_X0P5B_A9TL40 + PLACED ( 11970 26460 ) S ;
+ - U46 INV_X0P5B_A9TL40 + PLACED ( 18240 26460 ) FS ;
+ - U45 INV_X0P5B_A9TL40 + PLACED ( 17480 27720 ) N ;
+ - U44 INV_X0P5B_A9TL40 + PLACED ( 4560 1260 ) FS ;
+ - U43 INV_X0P5B_A9TL40 + PLACED ( 4940 1260 ) S ;
+ - U42 BUFH_X1M_A9TL40 + PLACED ( 9690 0 ) N ;
+ - U41 INV_X0P5B_A9TL40 + PLACED ( 11970 0 ) FN ;
+ - U40 INV_X0P5B_A9TL40 + PLACED ( 13110 1260 ) S ;
+ - U39 INV_X0P5B_A9TL40 + PLACED ( 16910 1260 ) S ;
+ - U38 INV_X0P5B_A9TL40 + PLACED ( 16530 1260 ) S ;
+ - U37 BUF_X1P2B_A9TL40 + PLACED ( 20520 0 ) N ;
+ - U36 BUFH_X1M_A9TL40 + PLACED ( 24510 0 ) N ;
+ - U35 INV_X0P5B_A9TL40 + PLACED ( 13490 26460 ) S ;
+ - U34 INV_X0P5B_A9TL40 + PLACED ( 14250 26460 ) S ;
+ - U33 INV_X0P5B_A9TL40 + PLACED ( 14630 26460 ) S ;
+ - U32 INV_X0P5B_A9TL40 + PLACED ( 15010 27720 ) N ;
+ - U31 INV_X0P5B_A9TL40 + PLACED ( 4370 23940 ) FS ;
+ - U30 INV_X0P5B_A9TL40 + PLACED ( 1330 23940 ) FS ;
+ - U29 INV_X0P5B_A9TL40 + PLACED ( 22040 27720 ) N ;
+ - U28 INV_X0P5B_A9TL40 + PLACED ( 21660 27720 ) N ;
+ - U27 INV_X0P5B_A9TL40 + PLACED ( 10260 0 ) N ;
+ - U26 INV_X0P5B_A9TL40 + PLACED ( 9120 1260 ) FS ;
+ - U25 INV_X0P5B_A9TL40 + PLACED ( 10070 1260 ) FS ;
+ - U24 INV_X0P5B_A9TL40 + PLACED ( 8740 1260 ) FS ;
+ - U23 BUFH_X1M_A9TL40 + PLACED ( 15960 1260 ) FS ;
+ - U22 INV_X0P5B_A9TL40 + PLACED ( 19000 0 ) N ;
+ - U21 INV_X0P5B_A9TL40 + PLACED ( 19380 0 ) N ;
+ - U20 BUFH_X1M_A9TL40 + PLACED ( 25650 0 ) FN ;
+ - U19 INV_X0P5B_A9TL40 + PLACED ( 28310 0 ) FN ;
+ - U18 INV_X0P5B_A9TL40 + PLACED ( 28690 0 ) N ;
+ - U17 INV_X0P5B_A9TL40 + PLACED ( 950 23940 ) FS ;
+ - U16 INV_X0P5B_A9TL40 + PLACED ( 950 27720 ) FN ;
+ - U15 INV_X1P2B_A9TL40 + PLACED ( 29260 15120 ) FN ;
+ - U14 INV_X0P5B_A9TL40 + PLACED ( 10830 22680 ) N ;
+ - U13 INV_X1B_A9TL40 + PLACED ( 16150 20160 ) N ;
+ - U12 INV_X1P4B_A9TL40 + PLACED ( 9120 15120 ) N ;
+ - U11 BUFH_X1M_A9TL40 + PLACED ( 17860 27720 ) N ;
+ - U10 BUFH_X1M_A9TL40 + PLACED ( 10830 1260 ) FS ;
+ - U9 BUFH_X1M_A9TL40 + PLACED ( 17670 1260 ) FS ;
+ - U8 BUFH_X1M_A9TL40 + PLACED ( 18810 2520 ) FN ;
+ - U7 BUFH_X1M_A9TL40 + PLACED ( 23560 3780 ) S ;
+ - U6 BUFH_X1M_A9TL40 + PLACED ( 26220 0 ) FN ;
+ - U5 BUFH_X1M_A9TL40 + PLACED ( 7220 25200 ) N ;
+ - U4 BUFH_X1M_A9TL40 + PLACED ( 10260 26460 ) FS ;
+ - U3 BUFH_X1M_A9TL40 + PLACED ( 15390 27720 ) FN ;
+ - U2 INV_X3B_A9TL40 + PLACED ( 9310 11340 ) S ;
+ - U1 BUF_X3P5B_A9TL40 + PLACED ( 22420 27720 ) FN ;
+ - i_rx_phy\/sd_nrzi_reg DFFQ_X1M_A9TL40 + PLACED ( 10260 16380 ) FS ;
+ - i_tx_phy\/append_eop_sync4_reg DFFQ_X1M_A9TL40 + PLACED ( 11400 21420 ) S ;
+ - i_tx_phy\/txoe_r2_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 21420 ) FS ;
+ - i_rx_phy\/fs_state_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 0 16380 ) FS ;
+ - i_tx_phy\/txdn_reg DFFQ_X1M_A9TL40 + PLACED ( 5510 23940 ) S ;
+ - i_tx_phy\/sd_nrzi_o_reg DFFQ_X1M_A9TL40 + PLACED ( 11020 25200 ) FN ;
+ - i_tx_phy\/bit_cnt_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 23370 21420 ) S ;
+ - i_tx_phy\/append_eop_sync1_reg DFFQ_X1M_A9TL40 + PLACED ( 14820 13860 ) FS ;
+ - i_tx_phy\/append_eop_sync2_reg DFFQ_X1M_A9TL40 + PLACED ( 14440 17640 ) N ;
+ - rst_cnt_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 26980 21420 ) FS ;
+ - i_tx_phy\/hold_reg_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 13490 16380 ) FS ;
+ - i_tx_phy\/hold_reg_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 18240 1260 ) FS ;
+ - i_tx_phy\/hold_reg_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 19380 11340 ) FS ;
+ - i_tx_phy\/hold_reg_reg\[3\] DFFQ_X1M_A9TL40 + PLACED ( 15390 2520 ) N ;
+ - i_tx_phy\/hold_reg_reg\[4\] DFFQ_X1M_A9TL40 + PLACED ( 15770 12600 ) N ;
+ - i_rx_phy\/rx_active_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 7560 ) N ;
+ - i_rx_phy\/rxdn_s1_reg DFFQ_X1M_A9TL40 + PLACED ( 2090 27720 ) N ;
+ - i_rx_phy\/rxdp_s1_reg DFFQ_X1M_A9TL40 + PLACED ( 23750 7560 ) N ;
+ - i_rx_phy\/byte_err_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 0 ) FN ;
+ - i_rx_phy\/sync_err_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 5040 ) N ;
+ - usb_rst_reg DFFQ_X1M_A9TL40 + PLACED ( 20330 26460 ) S ;
+ - i_rx_phy\/bit_stuff_err_reg DFFQ_X1M_A9TL40 + PLACED ( 5510 2520 ) FN ;
+ - i_tx_phy\/txoe_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 21420 ) S ;
+ - i_rx_phy\/hold_reg_reg\[7\] DFFQ_X1M_A9TL40 + PLACED ( 26980 7560 ) N ;
+ - i_rx_phy\/hold_reg_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 24890 16380 ) S ;
+ - i_rx_phy\/hold_reg_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 26980 20160 ) N ;
+ - i_rx_phy\/hold_reg_reg\[3\] DFFQ_X1M_A9TL40 + PLACED ( 25460 17640 ) N ;
+ - i_rx_phy\/hold_reg_reg\[4\] DFFQ_X1M_A9TL40 + PLACED ( 25460 15120 ) N ;
+ - i_rx_phy\/hold_reg_reg\[5\] DFFQ_X1M_A9TL40 + PLACED ( 26980 12600 ) N ;
+ - i_rx_phy\/hold_reg_reg\[6\] DFFQ_X1M_A9TL40 + PLACED ( 26980 10080 ) N ;
+ - i_tx_phy\/txdp_reg DFFQ_X1M_A9TL40 + PLACED ( 0 22680 ) FN ;
+ - i_rx_phy\/rx_valid_reg DFFQ_X1M_A9TL40 + PLACED ( 5890 13860 ) S ;
+ - i_rx_phy\/hold_reg_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 23750 10080 ) N ;
+ - i_tx_phy\/TxReady_o_reg DFFQ_X1M_A9TL40 + PLACED ( 0 7560 ) FN ;
+ - i_rx_phy\/fs_ce_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 18900 ) FS ;
+ - i_rx_phy\/se0_s_reg DFFQ_X1M_A9TL40 + PLACED ( 5130 11340 ) FS ;
+ - i_rx_phy\/sd_r_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 17640 ) N ;
+ - i_rx_phy\/fs_state_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 2470 13860 ) S ;
+ - i_rx_phy\/rx_valid_r_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 7560 ) N ;
+ - i_rx_phy\/rx_valid1_reg DFFQ_X1M_A9TL40 + PLACED ( 5320 15120 ) N ;
+ - i_rx_phy\/bit_cnt_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 12540 12600 ) FN ;
+ - i_rx_phy\/bit_cnt_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 11400 13860 ) S ;
+ - i_rx_phy\/bit_cnt_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 12920 10080 ) FN ;
+ - i_rx_phy\/shift_en_reg DFFQ_X1M_A9TL40 + PLACED ( 8930 6300 ) FS ;
+ - i_rx_phy\/dpll_state_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 0 2520 ) FN ;
+ - i_tx_phy\/append_eop_sync3_reg DFFQ_X1M_A9TL40 + PLACED ( 11210 17640 ) N ;
+ - i_tx_phy\/append_eop_reg DFFQ_X1M_A9TL40 + PLACED ( 22610 11340 ) S ;
+ - i_tx_phy\/sft_done_r_reg DFFQ_X1M_A9TL40 + PLACED ( 24130 13860 ) FS ;
+ - i_tx_phy\/sft_done_reg DFFQ_X1M_A9TL40 + PLACED ( 22040 15120 ) N ;
+ - i_tx_phy\/sd_raw_o_reg DFFQ_X1M_A9TL40 + PLACED ( 18240 20160 ) FN ;
+ - i_tx_phy\/hold_reg_d_reg\[7\] DFFQ_X1M_A9TL40 + PLACED ( 11970 5040 ) N ;
+ - i_tx_phy\/hold_reg_reg\[7\] DFFQ_X1M_A9TL40 + PLACED ( 8930 2520 ) N ;
+ - i_tx_phy\/hold_reg_d_reg\[6\] DFFQ_X1M_A9TL40 + PLACED ( 15770 7560 ) N ;
+ - i_tx_phy\/hold_reg_reg\[6\] DFFQ_X1M_A9TL40 + PLACED ( 12160 2520 ) N ;
+ - i_tx_phy\/hold_reg_d_reg\[5\] DFFQ_X1M_A9TL40 + PLACED ( 15580 0 ) N ;
+ - i_tx_phy\/hold_reg_reg\[5\] DFFQ_X1M_A9TL40 + PLACED ( 12350 0 ) N ;
+ - i_tx_phy\/hold_reg_d_reg\[4\] DFFQ_X1M_A9TL40 + PLACED ( 18240 13860 ) FS ;
+ - i_tx_phy\/hold_reg_d_reg\[3\] DFFQ_X1M_A9TL40 + PLACED ( 15200 5040 ) N ;
+ - i_tx_phy\/hold_reg_d_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 21090 12600 ) FN ;
+ - i_tx_phy\/hold_reg_d_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 20710 8820 ) FS ;
+ - i_tx_phy\/hold_reg_d_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 17860 17640 ) N ;
+ - i_tx_phy\/ld_data_reg DFFQ_X1M_A9TL40 + PLACED ( 6460 3780 ) FS ;
+ - i_tx_phy\/data_done_reg DFFQ_X1M_A9TL40 + PLACED ( 16150 10080 ) N ;
+ - i_tx_phy\/tx_ip_reg DFFQ_X1M_A9TL40 + PLACED ( 12160 6300 ) FS ;
+ - i_rx_phy\/fs_ce_r2_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 18900 ) FS ;
+ - i_rx_phy\/fs_ce_r1_reg DFFQ_X1M_A9TL40 + PLACED ( 0 5040 ) N ;
+ - i_rx_phy\/dpll_state_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 0 0 ) N ;
+ - i_rx_phy\/rx_en_reg DFFQ_X1M_A9TL40 + PLACED ( 0 20160 ) N ;
+ - i_rx_phy\/rxd_r_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 17640 ) N ;
+ - i_rx_phy\/rxd_s_reg DFFQ_X1M_A9TL40 + PLACED ( 3990 25200 ) N ;
+ - i_rx_phy\/rxd_s1_reg DFFQ_X1M_A9TL40 + PLACED ( 5320 27720 ) FN ;
+ - i_rx_phy\/rxd_s0_reg DFFQ_X1M_A9TL40 + PLACED ( 8550 27720 ) FN ;
+ - i_rx_phy\/se0_r_reg DFFQ_X1M_A9TL40 + PLACED ( 5700 6300 ) FS ;
+ - i_rx_phy\/rxdp_s_reg DFFQ_X1M_A9TL40 + PLACED ( 3040 3780 ) FS ;
+ - i_rx_phy\/rxdp_s_r_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 0 ) N ;
+ - i_rx_phy\/rxdp_s0_reg DFFQ_X1M_A9TL40 + PLACED ( 12350 8820 ) FS ;
+ - i_rx_phy\/rxdn_s_reg DFFQ_X1M_A9TL40 + PLACED ( 3230 22680 ) N ;
+ - i_rx_phy\/rxdn_s_r_reg DFFQ_X1M_A9TL40 + PLACED ( 0 25200 ) N ;
+ - i_rx_phy\/rxdn_s0_reg DFFQ_X1M_A9TL40 + PLACED ( 0 26460 ) FS ;
+ - U80 INV_X0P5B_A9TL40 + PLACED ( 3610 26460 ) S ;
+ - U79 INV_X0P5B_A9TL40 + PLACED ( 3990 26460 ) S ;
+ - U78 INV_X0P5B_A9TL40 + PLACED ( 9880 26460 ) S ;
+ - U77 INV_X0P5B_A9TL40 + PLACED ( 9500 26460 ) FS ;
+ - U76 INV_X0P5B_A9TL40 + PLACED ( 12350 26460 ) FS ;
+ - U75 INV_X0P5B_A9TL40 + PLACED ( 11590 26460 ) FS ;
+ - U74 INV_X0P5B_A9TL40 + PLACED ( 15960 27720 ) FN ;
+ - U73 INV_X0P5B_A9TL40 + PLACED ( 16720 27720 ) FN ;
+ - U72 INV_X0P5B_A9TL40 + PLACED ( 4180 1260 ) FS ;
+ - U71 INV_X0P5B_A9TL40 + PLACED ( 5320 1260 ) S ;
+ - U70 BUFH_X1M_A9TL40 + PLACED ( 9500 1260 ) S ;
+ - U69 INV_X0P5B_A9TL40 + PLACED ( 10450 1260 ) S ;
+ - U68 INV_X0P5B_A9TL40 + PLACED ( 11400 1260 ) S ;
+ - U67 INV_X0P5B_A9TL40 + PLACED ( 15580 1260 ) S ;
+ - U311 NOR3_X1M_A9TL40 + PLACED ( 1140 10080 ) N ;
+ - U310 NAND3_X1M_A9TL40 + PLACED ( 20710 22680 ) N ;
+ - U309 NAND3_X1M_A9TL40 + PLACED ( 0 11340 ) FS ;
+ - U308 NAND2_X1B_A9TL40 + PLACED ( 18050 22680 ) FN ;
+ - U307 OAI21_X1M_A9TL40 + PLACED ( 16340 23940 ) FS ;
+ - U306 NAND3_X1M_A9TL40 + PLACED ( 18240 23940 ) FS ;
+ - U305 NAND2_X1B_A9TL40 + PLACED ( 15580 8820 ) FS ;
+ - U303 INV_X1B_A9TL40 + PLACED ( 11210 5040 ) N ;
+ - U302 INV_X1B_A9TL40 + PLACED ( 20710 3780 ) S ;
+ - U301 NOR2_X1M_A9TL40 + PLACED ( 20140 22680 ) N ;
+ - U300 INV_X1B_A9TL40 + PLACED ( 21280 5040 ) FN ;
+ - U299 INV_X1B_A9TL40 + PLACED ( 1710 17640 ) FN ;
+ - U298 INV_X1B_A9TL40 + PLACED ( 11970 22680 ) N ;
+ - U297 INV_X1B_A9TL40 + PLACED ( 9880 16380 ) FS ;
+ - U296 INV_X1B_A9TL40 + PLACED ( 13300 18900 ) S ;
+ - U295 INV_X1B_A9TL40 + PLACED ( 9120 20160 ) N ;
+ - U294 INV_X1B_A9TL40 + PLACED ( 11020 13860 ) FS ;
+ - U293 INV_X1B_A9TL40 + PLACED ( 10070 11340 ) S ;
+ - U292 INV_X1B_A9TL40 + PLACED ( 16150 8820 ) FS ;
+ - U291 INV_X1B_A9TL40 + PLACED ( 20140 5040 ) FN ;
+ - U290 INV_X1B_A9TL40 + PLACED ( 28500 3780 ) S ;
+ - U289 INV_X1B_A9TL40 + PLACED ( 25270 18900 ) S ;
+ - U288 INV_X1B_A9TL40 + PLACED ( 26410 22680 ) N ;
+ - U287 INV_X1B_A9TL40 + PLACED ( 19950 26460 ) S ;
+ - U286 INV_X1B_A9TL40 + PLACED ( 15580 23940 ) S ;
+ - U285 NOR2_X1M_A9TL40 + PLACED ( 4940 12600 ) N ;
+ - U284 INV_X1B_A9TL40 + PLACED ( 10450 22680 ) N ;
+ - U283 INV_X1B_A9TL40 + PLACED ( 15960 18900 ) S ;
+ - U282 INV_X1B_A9TL40 + PLACED ( 29260 6300 ) S ;
+ - U281 INV_X1B_A9TL40 + PLACED ( 9500 12600 ) FN ;
+ - U280 INV_X1B_A9TL40 + PLACED ( 7600 8820 ) S ;
+ - U279 INV_X1B_A9TL40 + PLACED ( 22990 21420 ) S ;
+ - U278 INV_X1B_A9TL40 + PLACED ( 19760 16380 ) FS ;
+ - U277 INV_X1B_A9TL40 + PLACED ( 1330 17640 ) N ;
+ - U276 INV_X1B_A9TL40 + PLACED ( 760 11340 ) FS ;
+ - U275 INV_X1B_A9TL40 + PLACED ( 3990 15120 ) N ;
+ - U274 INV_X1B_A9TL40 + PLACED ( 13870 20160 ) FN ;
+ - U272 INV_X1B_A9TL40 + PLACED ( 11020 8820 ) S ;
+ - U271 NOR2_X1B_A9TL40 + PLACED ( 18810 8820 ) S ;
+ - U270 NOR2_X1M_A9TL40 + PLACED ( 21090 16380 ) S ;
+ - U269 NOR2_X1M_A9TL40 + PLACED ( 4370 12600 ) N ;
+ - U268 NOR2_X1M_A9TL40 + PLACED ( 21090 15120 ) N ;
+ - U267 NOR2_X1M_A9TL40 + PLACED ( 3800 12600 ) FN ;
+ - U266 NAND3_X1A_A9TL40 + PLACED ( 28880 3780 ) S ;
+ - U265 NOR2_X1M_A9TL40 + PLACED ( 19570 5040 ) N ;
+ - U263 NOR2_X1M_A9TL40 + PLACED ( 9690 5040 ) FN ;
+ - U262 NOR2_X1M_A9TL40 + PLACED ( 1330 3780 ) FS ;
+ - U261 NOR2_X1M_A9TL40 + PLACED ( 2280 12600 ) N ;
+ - U260 NAND2_X2M_A9TL40 + PLACED ( 15390 22680 ) FN ;
+ - U259 NOR2_X1M_A9TL40 + PLACED ( 26030 26460 ) S ;
+ - U258 NOR2_X1M_A9TL40 + PLACED ( 27930 26460 ) FS ;
+ - U257 NOR2_X2B_A9TL40 + PLACED ( 8930 16380 ) S ;
+ - U256 INV_X0P5B_A9TL40 + PLACED ( 10640 13860 ) S ;
+ - U255 NOR2_X2B_A9TL40 + PLACED ( 11400 8820 ) FS ;
+ - U254 NOR2_X1M_A9TL40 + PLACED ( 18810 11340 ) FS ;
+ - U253 NAND2B_X1M_A9TL40 + PLACED ( 10260 3780 ) S ;
+ - U251 NOR2_X1M_A9TL40 + PLACED ( 3990 2520 ) FN ;
+ - U250 NOR2_X1M_A9TL40 + PLACED ( 12160 7560 ) FN ;
+ - U249 NOR2_X1M_A9TL40 + PLACED ( 2850 10080 ) FN ;
+ - U248 NOR2_X1B_A9TL40 + PLACED ( 5130 10080 ) N ;
+ - U247 INV_X1B_A9TL40 + PLACED ( 22230 20160 ) N ;
+ - U246 NOR2_X1M_A9TL40 + PLACED ( 6460 12600 ) FN ;
+ - U245 NOR2_X1M_A9TL40 + PLACED ( 1520 8820 ) FS ;
+ - U244 INV_X1B_A9TL40 + PLACED ( 1900 12600 ) FN ;
+ - U243 INV_X1B_A9TL40 + PLACED ( 15580 25200 ) N ;
+ - U242 INV_X2B_A9TL40 + PLACED ( 23750 2520 ) FN ;
+ - U241 INV_X1B_A9TL40 + PLACED ( 26030 6300 ) FS ;
+ - U240 INV_X1B_A9TL40 + PLACED ( 24510 17640 ) N ;
+ - U238 NOR2_X1B_A9TL40 + PLACED ( 25460 8820 ) S ;
+ - i_tx_phy\/state_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 22800 5040 ) FN ;
+ - i_rx_phy\/one_cnt_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 26980 1260 ) FS ;
+ - i_tx_phy\/one_cnt_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 18430 27720 ) FN ;
+ - i_rx_phy\/one_cnt_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 26980 2520 ) N ;
+ - i_tx_phy\/state_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 21280 0 ) N ;
+ - i_tx_phy\/state_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 23750 1260 ) S ;
+ - i_tx_phy\/one_cnt_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 19000 25200 ) FN ;
+ - i_tx_phy\/bit_cnt_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 21660 16380 ) S ;
+ - rst_cnt_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 26980 23940 ) FS ;
+ - rst_cnt_reg\[4\] DFFQ_X1M_A9TL40 + PLACED ( 21660 23940 ) FS ;
+ - i_tx_phy\/one_cnt_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 15010 26460 ) FS ;
+ - i_rx_phy\/one_cnt_reg\[0\] DFFQ_X1M_A9TL40 + PLACED ( 26980 5040 ) N ;
+ - rst_cnt_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 26980 27720 ) N ;
+ - rst_cnt_reg\[3\] DFFQ_X1M_A9TL40 + PLACED ( 23560 27720 ) N ;
+ - i_tx_phy\/tx_ip_sync_reg DFFQ_X1M_A9TL40 + PLACED ( 14820 21420 ) FS ;
+ - i_tx_phy\/bit_cnt_reg\[1\] DFFQ_X1M_A9TL40 + PLACED ( 23750 20160 ) FN ;
+ - i_rx_phy\/fs_state_reg\[2\] DFFQ_X1M_A9TL40 + PLACED ( 0 18900 ) S ;
+ - i_tx_phy\/sd_bs_o_reg DFFQ_X1M_A9TL40 + PLACED ( 11780 27720 ) N ;
+ - i_tx_phy\/txoe_r1_reg DFFQ_X1M_A9TL40 + PLACED ( 7790 25200 ) N ;
+ - U404 AOI31_X1M_A9TL40 + PLACED ( 1140 11340 ) FS ;
+ - U403 OAI31_X1M_A9TL40 + PLACED ( 2850 12600 ) N ;
+ - U402 NAND2_X1B_A9TL40 + PLACED ( 2090 11340 ) FS ;
+ - U401 AOI31_X1M_A9TL40 + PLACED ( 1900 10080 ) N ;
+ - U400 AOI21_X1M_A9TL40 + PLACED ( 4370 10080 ) N ;
+ - U399 AOI21_X1M_A9TL40 + PLACED ( 5700 10080 ) FN ;
+ - U398 CGEN_X1M_A9TL40 + PLACED ( 6650 26460 ) S ;
+ - U397 AOI21_X1M_A9TL40 + PLACED ( 3230 2520 ) N ;
+ - U396 NAND2_X1B_A9TL40 + PLACED ( 3990 6300 ) FS ;
+ - U395 AOI21_X1M_A9TL40 + PLACED ( 1140 6300 ) FS ;
+ - U394 AOI21_X1M_A9TL40 + PLACED ( 4180 16380 ) S ;
+ - U393 OAI21_X1M_A9TL40 + PLACED ( 3420 16380 ) S ;
+ - U392 OR2_X1B_A9TL40 + PLACED ( 3420 1260 ) S ;
+ - U391 OR2_X1B_A9TL40 + PLACED ( 3610 23940 ) FS ;
+ - U390 OAI211_X1M_A9TL40 + PLACED ( 9120 10080 ) FN ;
+ - U389 AND3_X1M_A9TL40 + PLACED ( 21470 17640 ) N ;
+ - U388 NOR2XB_X1M_A9TL40 + PLACED ( 23370 25200 ) N ;
+ - U387 NAND2_X1B_A9TL40 + PLACED ( 26600 26460 ) S ;
+ - U386 NOR2XB_X1M_A9TL40 + PLACED ( 26220 25200 ) FN ;
+ - U385 NAND2_X1B_A9TL40 + PLACED ( 29260 25200 ) FN ;
+ - U384 AOI31_X1M_A9TL40 + PLACED ( 23560 17640 ) FN ;
+ - U383 OA21A1OI2_X1M_A9TL40 + PLACED ( 22230 18900 ) FS ;
+ - U382 OAI21B_X1M_A9TL40 + PLACED ( 21850 21420 ) FS ;
+ - U381 NAND2_X1B_A9TL40 + PLACED ( 16530 22680 ) N ;
+ - U380 AOI22_X1M_A9TL40 + PLACED ( 570 8820 ) FS ;
+ - U379 AOI21_X1M_A9TL40 + PLACED ( 380 12600 ) N ;
+ - U378 OA1B2_X1M_A9TL40 + PLACED ( 0 10080 ) FN ;
+ - U377 NAND4BB_X1M_A9TL40 + PLACED ( 6270 8820 ) S ;
+ - U376 NOR2XB_X1M_A9TL40 + PLACED ( 1520 1260 ) FS ;
+ - U375 AND3_X1M_A9TL40 + PLACED ( 8550 8820 ) S ;
+ - U374 AOI2XB1_X1M_A9TL40 + PLACED ( 19570 7560 ) FN ;
+ - U373 NAND2_X1B_A9TL40 + PLACED ( 19000 7560 ) N ;
+ - U372 AND3_X1M_A9TL40 + PLACED ( 18620 18900 ) FS ;
+ - U371 OAI211_X1M_A9TL40 + PLACED ( 21280 18900 ) FS ;
+ - U370 AOI22_X1M_A9TL40 + PLACED ( 22230 13860 ) S ;
+ - U369 AOI22_X1M_A9TL40 + PLACED ( 20140 16380 ) S ;
+ - U368 OAI211_X1M_A9TL40 + PLACED ( 19950 18900 ) S ;
+ - U367 AOI22_X1M_A9TL40 + PLACED ( 18620 16380 ) FS ;
+ - U366 AOI22_X1M_A9TL40 + PLACED ( 19760 15120 ) N ;
+ - U365 OAI22BB_X1M_A9TL40 + PLACED ( 9310 23940 ) FS ;
+ - U364 NAND2_X1B_A9TL40 + PLACED ( 14820 22680 ) N ;
+ - U363 NAND2_X1B_A9TL40 + PLACED ( 14060 22680 ) N ;
+ - U362 AOI21_X1M_A9TL40 + PLACED ( 13300 22680 ) N ;
+ - U361 AND2_X1B_A9TL40 + PLACED ( 3230 25200 ) FN ;
+ - U360 AND2_X1B_A9TL40 + PLACED ( 13870 3780 ) S ;
+ - U359 AND2_X1B_A9TL40 + PLACED ( 9690 15120 ) FN ;
+ - U358 INV_X0P5B_A9TL40 + PLACED ( 1140 1260 ) S ;
+ - U357 AO21A1AI2_X1M_A9TL40 + PLACED ( 24320 2520 ) N ;
+ - U356 OAI21_X1M_A9TL40 + PLACED ( 25270 6300 ) S ;
+ - U355 NAND2_X1B_A9TL40 + PLACED ( 22040 6300 ) FS ;
+ - U354 NAND2_X1B_A9TL40 + PLACED ( 25840 3780 ) FS ;
+ - U353 NAND2_X1B_A9TL40 + PLACED ( 10450 8820 ) S ;
+ - U347 INV_X0P5B_A9TL40 + PLACED ( 8360 1260 ) FS ;
+ - U346 INV_X0P5B_A9TL40 + PLACED ( 5700 1260 ) FS ;
+ - U331 INV_X0P5B_A9TL40 + PLACED ( 10830 26460 ) S ;
+ - U330 INV_X0P5B_A9TL40 + PLACED ( 12730 26460 ) S ;
+ - U327 INV_X0P5B_A9TL40 + PLACED ( 1330 27720 ) FN ;
+ - U326 INV_X0P5B_A9TL40 + PLACED ( 3230 26460 ) S ;
+ - U324 AOI21_X2M_A9TL40 + PLACED ( 22610 6300 ) FS ;
+ - U323 NOR2XB_X3M_A9TL40 + PLACED ( 18620 22680 ) FN ;
+ - U322 NAND3_X1M_A9TL40 + PLACED ( 12160 10080 ) N ;
+ - U321 NOR2_X1B_A9TL40 + PLACED ( 8930 12600 ) FN ;
+ - U320 NAND3_X1M_A9TL40 + PLACED ( 3420 11340 ) S ;
+ - U319 NAND3_X1M_A9TL40 + PLACED ( 9500 8820 ) FS ;
+ - U318 NOR3_X1M_A9TL40 + PLACED ( 10260 7560 ) FN ;
+ - U317 NAND3_X1M_A9TL40 + PLACED ( 22230 2520 ) N ;
+ - U316 OAI31_X1M_A9TL40 + PLACED ( 26410 3780 ) FS ;
+ - U315 NOR3_X1M_A9TL40 + PLACED ( 6650 1260 ) S ;
+ - U314 NAND2XB_X1M_A9TL40 + PLACED ( 25270 12600 ) FN ;
+ - U313 NOR3_X1M_A9TL40 + PLACED ( 20900 6300 ) FS ;
+ - U312 NAND2_X1B_A9TL40 + PLACED ( 11400 18900 ) FS ;
+ - U497 OA22_X1M_A9TL40 + PLACED ( 25840 11340 ) S ;
+ - U496 OA22_X1M_A9TL40 + PLACED ( 28690 17640 ) FN ;
+ - U495 OA22_X1M_A9TL40 + PLACED ( 28880 18900 ) FS ;
+ - U494 OA22_X1M_A9TL40 + PLACED ( 28690 16380 ) S ;
+ - U493 OA22_X1M_A9TL40 + PLACED ( 28500 13860 ) S ;
+ - U492 OA22_X1M_A9TL40 + PLACED ( 28690 11340 ) S ;
+ - U491 OA22_X1M_A9TL40 + PLACED ( 27170 11340 ) S ;
+ - U490 AO21B_X1M_A9TL40 + PLACED ( 27740 8820 ) S ;
+ - U488 OA22_X1M_A9TL40 + PLACED ( 6460 10080 ) N ;
+ - U487 AOI22_X1M_A9TL40 + PLACED ( 9690 18900 ) FS ;
+ - U486 AO21_X1M_A9TL40 + PLACED ( 3800 8820 ) S ;
+ - U485 AOI32_X1M_A9TL40 + PLACED ( 9500 13860 ) S ;
+ - U484 OAI22_X1M_A9TL40 + PLACED ( 11590 12600 ) N ;
+ - U483 AOI32_X1M_A9TL40 + PLACED ( 10450 12600 ) FN ;
+ - U482 NAND2_X1B_A9TL40 + PLACED ( 13490 11340 ) S ;
+ - U481 AOI21_X1M_A9TL40 + PLACED ( 10450 11340 ) FS ;
+ - U480 AOI22_X1M_A9TL40 + PLACED ( 11210 11340 ) FS ;
+ - U479 OAI211_X1M_A9TL40 + PLACED ( 11020 10080 ) N ;
+ - U478 AOI22BB_X1M_A9TL40 + PLACED ( 25460 2520 ) N ;
+ - U477 AOI22_X1M_A9TL40 + PLACED ( 26030 5040 ) N ;
+ - U476 OAI21_X1M_A9TL40 + PLACED ( 10640 18900 ) S ;
+ - U475 AOI22_X1M_A9TL40 + PLACED ( 8360 11340 ) FS ;
+ - U474 AOI22_X1M_A9TL40 + PLACED ( 9690 17640 ) N ;
+ - U473 OAI21_X1M_A9TL40 + PLACED ( 11970 23940 ) S ;
+ - U472 AOI211_X1M_A9TL40 + PLACED ( 12350 22680 ) N ;
+ - U471 OR2_X1B_A9TL40 + PLACED ( 13870 23940 ) S ;
+ - U470 AO21B_X1M_A9TL40 + PLACED ( 14630 25200 ) FN ;
+ - U469 OA211_X1M_A9TL40 + PLACED ( 16530 8820 ) S ;
+ - U468 AOI21_X1M_A9TL40 + PLACED ( 15390 6300 ) S ;
+ - U467 AOI22_X1M_A9TL40 + PLACED ( 10260 5040 ) N ;
+ - U466 AO22_X1M_A9TL40 + PLACED ( 11780 1260 ) FS ;
+ - U465 AO22_X1M_A9TL40 + PLACED ( 10640 0 ) N ;
+ - U464 AO22_X1M_A9TL40 + PLACED ( 19190 12600 ) FN ;
+ - U463 AO22_X1M_A9TL40 + PLACED ( 18620 3780 ) S ;
+ - U462 AO22_X1M_A9TL40 + PLACED ( 19380 8820 ) S ;
+ - U461 AO22_X1M_A9TL40 + PLACED ( 19380 2520 ) N ;
+ - U460 AO22_X1M_A9TL40 + PLACED ( 17670 15120 ) FN ;
+ - U459 NOR2_X1A_A9TL40 + PLACED ( 12350 3780 ) FS ;
+ - U458 NOR2_X1A_A9TL40 + PLACED ( 11210 3780 ) S ;
+ - U457 NOR3BB_X1M_A9TL40 + PLACED ( 16340 6300 ) S ;
+ - U456 OAI31_X1M_A9TL40 + PLACED ( 21660 5040 ) N ;
+ - U455 OR2_X1B_A9TL40 + PLACED ( 21850 3780 ) FS ;
+ - U454 NAND2_X1B_A9TL40 + PLACED ( 20710 5040 ) N ;
+ - U453 AOI21_X1M_A9TL40 + PLACED ( 22990 2520 ) N ;
+ - U452 AOI21_X1M_A9TL40 + PLACED ( 22420 1260 ) S ;
+ - U451 NAND2_X1B_A9TL40 + PLACED ( 21660 2520 ) N ;
+ - U450 OAI31_X1M_A9TL40 + PLACED ( 19000 26460 ) FS ;
+ - U449 AO21A1AI2_X1M_A9TL40 + PLACED ( 16530 25200 ) N ;
+ - U448 AOI22BB_X1M_A9TL40 + PLACED ( 17670 25200 ) N ;
+ - U447 NAND2_X1B_A9TL40 + PLACED ( 15960 25200 ) N ;
+ - U446 AOI22_X1M_A9TL40 + PLACED ( 14630 23940 ) FS ;
+ - U445 OAI31_X1M_A9TL40 + PLACED ( 21470 22680 ) N ;
+ - U444 NAND2_X1B_A9TL40 + PLACED ( 21280 21420 ) S ;
+ - U443 AOI22_X1M_A9TL40 + PLACED ( 24130 18900 ) FS ;
+ - U442 NAND2_X1B_A9TL40 + PLACED ( 22610 20160 ) N ;
+ - U441 OAI21_X1M_A9TL40 + PLACED ( 15200 18900 ) S ;
+ - U440 NAND2_X1B_A9TL40 + PLACED ( 17290 20160 ) FN ;
+ - U439 AO22_X1M_A9TL40 + PLACED ( 17100 16380 ) S ;
+ - U438 AO22_X1M_A9TL40 + PLACED ( 16720 18900 ) FS ;
+ - U437 OAI22_X1M_A9TL40 + PLACED ( 14250 18900 ) FS ;
+ - U436 OAI21_X1M_A9TL40 + PLACED ( 12540 18900 ) FS ;
+ - U435 OAI22_X1M_A9TL40 + PLACED ( 11590 20160 ) N ;
+ - U434 OAI21_X1M_A9TL40 + PLACED ( 11210 22680 ) FN ;
+ - U433 OAI22BB_X1M_A9TL40 + PLACED ( 9500 20160 ) N ;
+ - U432 OAI31_X1M_A9TL40 + PLACED ( 10070 21420 ) S ;
+ - U431 AOI21_X1M_A9TL40 + PLACED ( 7600 20160 ) N ;
+ - U430 OAI21_X1M_A9TL40 + PLACED ( 9690 22680 ) FN ;
+ - U429 AOI21_X1M_A9TL40 + PLACED ( 6840 20160 ) N ;
+ - U428 AOI22_X1M_A9TL40 + PLACED ( 17290 11340 ) S ;
+ - U427 AOI21_X1M_A9TL40 + PLACED ( 20900 2520 ) N ;
+ - U426 AOI21_X1M_A9TL40 + PLACED ( 21090 3780 ) FS ;
+ - U425 AOI31_X1M_A9TL40 + PLACED ( 21850 7560 ) N ;
+ - U424 OAI21_X1M_A9TL40 + PLACED ( 20710 7560 ) N ;
+ - U423 AOI32_X1M_A9TL40 + PLACED ( 19190 6300 ) FS ;
+ - U422 OAI22_X1M_A9TL40 + PLACED ( 18050 6300 ) FS ;
+ - U421 NAND2_X1B_A9TL40 + PLACED ( 19000 5040 ) FN ;
+ - U420 AOI32_X1M_A9TL40 + PLACED ( 7980 10080 ) N ;
+ - U419 NAND3BB_X1M_A9TL40 + PLACED ( 3420 10080 ) N ;
+ - U418 OAI31_X1M_A9TL40 + PLACED ( 22420 25200 ) N ;
+ - U417 OAI21_X1M_A9TL40 + PLACED ( 24320 25200 ) FN ;
+ - U416 AO22_X1M_A9TL40 + PLACED ( 24130 26460 ) S ;
+ - U415 OAI21_X1M_A9TL40 + PLACED ( 25270 25200 ) FN ;
+ - U414 OAI31_X1M_A9TL40 + PLACED ( 26980 25200 ) N ;
+ - U413 OAI21_X1M_A9TL40 + PLACED ( 28500 25200 ) FN ;
+ - U412 AOI22_X1M_A9TL40 + PLACED ( 25460 22680 ) N ;
+ - U411 AO22_X1M_A9TL40 + PLACED ( 28690 26460 ) FS ;
+ - U410 OAI21_X1M_A9TL40 + PLACED ( 25460 23940 ) FS ;
+ - U409 NAND3BB_X1M_A9TL40 + PLACED ( 17100 22680 ) N ;
+ - U408 OAI22_X1M_A9TL40 + PLACED ( 1140 13860 ) FS ;
+ - U407 AOI32_X1M_A9TL40 + PLACED ( 1140 15120 ) FN ;
+ - U406 OAI22_X1M_A9TL40 + PLACED ( 190 15120 ) FN ;
+ - U405 NAND2_X1B_A9TL40 + PLACED ( 570 13860 ) S ;
+END COMPONENTS
+PINS 33 ;
+ - RxError_o + NET RxError_o + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 735 ) N ;
+ - RxActive_o + NET RxActive_o + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 4655 ) N ;
+ - RxValid_o + NET RxValid_o + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 8575 ) N ;
+ - TxReady_o + NET TxReady_o + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 12495 ) N ;
+ - txoe + NET txoe + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 16415 ) N ;
+ - txdn + NET txdn + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 20335 ) N ;
+ - txdp + NET txdp + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 24255 ) N ;
+ - usb_rst + NET usb_rst + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 0 28175 ) N ;
+ - TxValid_i + NET TxValid_i + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 735 28910 ) N ;
+ - rxdn + NET rxdn + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 4795 28910 ) N ;
+ - rxdp + NET rxdp + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 8855 28910 ) N ;
+ - rxd + NET rxd + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 12915 28910 ) N ;
+ - phy_tx_mode + NET phy_tx_mode + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 17115 28910 ) N ;
+ - rst + NET rst + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 21175 28910 ) N ;
+ - clk + NET clk + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 25235 28910 ) N ;
+ - LineState_o[1] + NET LineState_o[1] + DIRECTION OUTPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 29295 28910 ) N ;
+ - LineState_o[0] + NET LineState_o[0] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 735 ) N ;
+ - DataIn_o[7] + NET DataIn_o[7] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 4655 ) N ;
+ - DataIn_o[6] + NET DataIn_o[6] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 8575 ) N ;
+ - DataIn_o[5] + NET DataIn_o[5] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 12495 ) N ;
+ - DataIn_o[4] + NET DataIn_o[4] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 16415 ) N ;
+ - DataIn_o[3] + NET DataIn_o[3] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 20335 ) N ;
+ - DataIn_o[2] + NET DataIn_o[2] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 24255 ) N ;
+ - DataIn_o[1] + NET DataIn_o[1] + DIRECTION OUTPUT + USE SIGNAL + LAYER M2 ( 0 0 ) ( 70 70 ) + PLACED ( 30140 28175 ) N ;
+ - DataIn_o[0] + NET DataIn_o[0] + DIRECTION OUTPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 735 0 ) N ;
+ - DataOut_i[7] + NET DataOut_i[7] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 4795 0 ) N ;
+ - DataOut_i[6] + NET DataOut_i[6] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 8855 0 ) N ;
+ - DataOut_i[5] + NET DataOut_i[5] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 12915 0 ) N ;
+ - DataOut_i[4] + NET DataOut_i[4] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 17115 0 ) N ;
+ - DataOut_i[3] + NET DataOut_i[3] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 21175 0 ) N ;
+ - DataOut_i[2] + NET DataOut_i[2] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 25235 0 ) N ;
+ - DataOut_i[1] + NET DataOut_i[1] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 29295 0 ) N ;
+ - DataOut_i[0] + NET DataOut_i[0] + DIRECTION INPUT + USE SIGNAL + LAYER M3 ( 0 0 ) ( 70 70 ) + PLACED ( 15015 28910 ) N ;
+END PINS
+SPECIALNETS 2 ;
+ - VDD
+   ( i_rx_phy\/rxd_s_reg VDD )
+   ( i_rx_phy\/rxd_s1_reg VDD )
+   ( i_rx_phy\/rxd_s0_reg VDD )
+   ( i_rx_phy\/se0_r_reg VDD )
+   ( i_rx_phy\/rxdp_s_reg VDD )
+   ( i_rx_phy\/rxdp_s_r_reg VDD )
+   ( i_rx_phy\/rxdp_s0_reg VDD )
+   ( i_rx_phy\/rxdn_s_reg VDD )
+   ( i_rx_phy\/rxdn_s_r_reg VDD )
+   ( i_rx_phy\/rxdn_s0_reg VDD )
+   ( i_rx_phy\/se0_s_reg VDD )
+   ( i_rx_phy\/sd_r_reg VDD )
+   ( i_rx_phy\/fs_state_reg\[0\] VDD )
+   ( i_rx_phy\/rx_valid_r_reg VDD )
+   ( i_rx_phy\/rx_valid1_reg VDD )
+   ( i_rx_phy\/bit_cnt_reg\[2\] VDD )
+   ( i_rx_phy\/bit_cnt_reg\[1\] VDD )
+   ( i_rx_phy\/bit_cnt_reg\[0\] VDD )
+   ( i_rx_phy\/shift_en_reg VDD )
+   ( i_rx_phy\/dpll_state_reg\[0\] VDD )
+   ( i_tx_phy\/append_eop_sync3_reg VDD )
+   ( i_tx_phy\/append_eop_reg VDD )
+   ( i_tx_phy\/sft_done_r_reg VDD )
+   ( i_tx_phy\/sft_done_reg VDD )
+   ( i_tx_phy\/sd_raw_o_reg VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[7\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[7\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[6\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[6\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[5\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[5\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[4\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[3\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[2\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[1\] VDD )
+   ( i_tx_phy\/hold_reg_d_reg\[0\] VDD )
+   ( i_tx_phy\/ld_data_reg VDD )
+   ( i_tx_phy\/data_done_reg VDD )
+   ( i_tx_phy\/tx_ip_reg VDD )
+   ( i_rx_phy\/fs_ce_r2_reg VDD )
+   ( i_rx_phy\/fs_ce_r1_reg VDD )
+   ( i_rx_phy\/dpll_state_reg\[1\] VDD )
+   ( i_rx_phy\/rx_en_reg VDD )
+   ( i_rx_phy\/rxd_r_reg VDD )
+   ( i_tx_phy\/append_eop_sync4_reg VDD )
+   ( i_tx_phy\/txoe_r2_reg VDD )
+   ( i_rx_phy\/fs_state_reg\[1\] VDD )
+   ( i_tx_phy\/txdn_reg VDD )
+   ( i_tx_phy\/sd_nrzi_o_reg VDD )
+   ( i_tx_phy\/bit_cnt_reg\[0\] VDD )
+   ( i_tx_phy\/append_eop_sync1_reg VDD )
+   ( i_tx_phy\/append_eop_sync2_reg VDD )
+   ( rst_cnt_reg\[0\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[0\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[1\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[2\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[3\] VDD )
+   ( i_tx_phy\/hold_reg_reg\[4\] VDD )
+   ( i_rx_phy\/rx_active_reg VDD )
+   ( i_rx_phy\/rxdn_s1_reg VDD )
+   ( i_rx_phy\/rxdp_s1_reg VDD )
+   ( i_rx_phy\/byte_err_reg VDD )
+   ( i_rx_phy\/sync_err_reg VDD )
+   ( usb_rst_reg VDD )
+   ( i_rx_phy\/bit_stuff_err_reg VDD )
+   ( i_tx_phy\/txoe_reg VDD )
+   ( i_rx_phy\/hold_reg_reg\[7\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[1\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[2\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[3\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[4\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[5\] VDD )
+   ( i_rx_phy\/hold_reg_reg\[6\] VDD )
+   ( i_tx_phy\/txdp_reg VDD )
+   ( i_rx_phy\/rx_valid_reg VDD )
+   ( i_rx_phy\/hold_reg_reg\[0\] VDD )
+   ( i_tx_phy\/TxReady_o_reg VDD )
+   ( i_rx_phy\/fs_ce_reg VDD )
+   ( U253 VDD )
+   ( U251 VDD )
+   ( U250 VDD )
+   ( U249 VDD )
+   ( U248 VDD )
+   ( U247 VDD )
+   ( U246 VDD )
+   ( U245 VDD )
+   ( U244 VDD )
+   ( U243 VDD )
+   ( U242 VDD )
+   ( U241 VDD )
+   ( U240 VDD )
+   ( U238 VDD )
+   ( i_tx_phy\/state_reg\[2\] VDD )
+   ( i_rx_phy\/one_cnt_reg\[2\] VDD )
+   ( i_tx_phy\/one_cnt_reg\[2\] VDD )
+   ( i_rx_phy\/one_cnt_reg\[1\] VDD )
+   ( i_tx_phy\/state_reg\[0\] VDD )
+   ( i_tx_phy\/state_reg\[1\] VDD )
+   ( i_tx_phy\/one_cnt_reg\[1\] VDD )
+   ( i_tx_phy\/bit_cnt_reg\[2\] VDD )
+   ( rst_cnt_reg\[2\] VDD )
+   ( rst_cnt_reg\[4\] VDD )
+   ( i_tx_phy\/one_cnt_reg\[0\] VDD )
+   ( i_rx_phy\/one_cnt_reg\[0\] VDD )
+   ( rst_cnt_reg\[1\] VDD )
+   ( rst_cnt_reg\[3\] VDD )
+   ( i_tx_phy\/tx_ip_sync_reg VDD )
+   ( i_tx_phy\/bit_cnt_reg\[1\] VDD )
+   ( i_rx_phy\/fs_state_reg\[2\] VDD )
+   ( i_tx_phy\/sd_bs_o_reg VDD )
+   ( i_tx_phy\/txoe_r1_reg VDD )
+   ( i_rx_phy\/sd_nrzi_reg VDD )
+   ( U291 VDD )
+   ( U290 VDD )
+   ( U289 VDD )
+   ( U288 VDD )
+   ( U287 VDD )
+   ( U286 VDD )
+   ( U285 VDD )
+   ( U284 VDD )
+   ( U283 VDD )
+   ( U282 VDD )
+   ( U281 VDD )
+   ( U280 VDD )
+   ( U279 VDD )
+   ( U278 VDD )
+   ( U277 VDD )
+   ( U276 VDD )
+   ( U275 VDD )
+   ( U274 VDD )
+   ( U272 VDD )
+   ( U271 VDD )
+   ( U270 VDD )
+   ( U269 VDD )
+   ( U268 VDD )
+   ( U267 VDD )
+   ( U266 VDD )
+   ( U265 VDD )
+   ( U263 VDD )
+   ( U262 VDD )
+   ( U261 VDD )
+   ( U260 VDD )
+   ( U259 VDD )
+   ( U258 VDD )
+   ( U257 VDD )
+   ( U256 VDD )
+   ( U255 VDD )
+   ( U254 VDD )
+   ( U324 VDD )
+   ( U323 VDD )
+   ( U322 VDD )
+   ( U321 VDD )
+   ( U320 VDD )
+   ( U319 VDD )
+   ( U318 VDD )
+   ( U317 VDD )
+   ( U316 VDD )
+   ( U315 VDD )
+   ( U314 VDD )
+   ( U313 VDD )
+   ( U312 VDD )
+   ( U311 VDD )
+   ( U310 VDD )
+   ( U309 VDD )
+   ( U308 VDD )
+   ( U307 VDD )
+   ( U306 VDD )
+   ( U305 VDD )
+   ( U303 VDD )
+   ( U302 VDD )
+   ( U301 VDD )
+   ( U300 VDD )
+   ( U299 VDD )
+   ( U298 VDD )
+   ( U297 VDD )
+   ( U296 VDD )
+   ( U295 VDD )
+   ( U294 VDD )
+   ( U293 VDD )
+   ( U292 VDD )
+   ( U363 VDD )
+   ( U362 VDD )
+   ( U361 VDD )
+   ( U360 VDD )
+   ( U359 VDD )
+   ( U358 VDD )
+   ( U357 VDD )
+   ( U356 VDD )
+   ( U355 VDD )
+   ( U354 VDD )
+   ( U353 VDD )
+   ( U347 VDD )
+   ( U346 VDD )
+   ( U331 VDD )
+   ( U330 VDD )
+   ( U327 VDD )
+   ( U326 VDD )
+   ( U391 VDD )
+   ( U390 VDD )
+   ( U389 VDD )
+   ( U388 VDD )
+   ( U387 VDD )
+   ( U386 VDD )
+   ( U385 VDD )
+   ( U384 VDD )
+   ( U383 VDD )
+   ( U382 VDD )
+   ( U381 VDD )
+   ( U380 VDD )
+   ( U379 VDD )
+   ( U378 VDD )
+   ( U377 VDD )
+   ( U376 VDD )
+   ( U375 VDD )
+   ( U374 VDD )
+   ( U373 VDD )
+   ( U372 VDD )
+   ( U371 VDD )
+   ( U370 VDD )
+   ( U369 VDD )
+   ( U368 VDD )
+   ( U367 VDD )
+   ( U366 VDD )
+   ( U365 VDD )
+   ( U364 VDD )
+   ( U418 VDD )
+   ( U417 VDD )
+   ( U416 VDD )
+   ( U415 VDD )
+   ( U414 VDD )
+   ( U413 VDD )
+   ( U412 VDD )
+   ( U411 VDD )
+   ( U410 VDD )
+   ( U409 VDD )
+   ( U408 VDD )
+   ( U407 VDD )
+   ( U406 VDD )
+   ( U405 VDD )
+   ( U404 VDD )
+   ( U403 VDD )
+   ( U402 VDD )
+   ( U401 VDD )
+   ( U400 VDD )
+   ( U399 VDD )
+   ( U398 VDD )
+   ( U397 VDD )
+   ( U396 VDD )
+   ( U395 VDD )
+   ( U394 VDD )
+   ( U393 VDD )
+   ( U392 VDD )
+   ( U445 VDD )
+   ( U444 VDD )
+   ( U443 VDD )
+   ( U442 VDD )
+   ( U441 VDD )
+   ( U440 VDD )
+   ( U439 VDD )
+   ( U438 VDD )
+   ( U437 VDD )
+   ( U436 VDD )
+   ( U435 VDD )
+   ( U434 VDD )
+   ( U433 VDD )
+   ( U432 VDD )
+   ( U431 VDD )
+   ( U430 VDD )
+   ( U429 VDD )
+   ( U428 VDD )
+   ( U427 VDD )
+   ( U426 VDD )
+   ( U425 VDD )
+   ( U424 VDD )
+   ( U423 VDD )
+   ( U422 VDD )
+   ( U421 VDD )
+   ( U420 VDD )
+   ( U419 VDD )
+   ( U472 VDD )
+   ( U471 VDD )
+   ( U470 VDD )
+   ( U469 VDD )
+   ( U468 VDD )
+   ( U467 VDD )
+   ( U466 VDD )
+   ( U465 VDD )
+   ( U464 VDD )
+   ( U463 VDD )
+   ( U462 VDD )
+   ( U461 VDD )
+   ( U460 VDD )
+   ( U459 VDD )
+   ( U458 VDD )
+   ( U457 VDD )
+   ( U456 VDD )
+   ( U455 VDD )
+   ( U454 VDD )
+   ( U453 VDD )
+   ( U452 VDD )
+   ( U451 VDD )
+   ( U450 VDD )
+   ( U449 VDD )
+   ( U448 VDD )
+   ( U447 VDD )
+   ( U446 VDD )
+   ( U497 VDD )
+   ( U496 VDD )
+   ( U495 VDD )
+   ( U494 VDD )
+   ( U493 VDD )
+   ( U492 VDD )
+   ( U491 VDD )
+   ( U490 VDD )
+   ( U488 VDD )
+   ( U487 VDD )
+   ( U486 VDD )
+   ( U485 VDD )
+   ( U484 VDD )
+   ( U483 VDD )
+   ( U482 VDD )
+   ( U481 VDD )
+   ( U480 VDD )
+   ( U479 VDD )
+   ( U478 VDD )
+   ( U477 VDD )
+   ( U476 VDD )
+   ( U475 VDD )
+   ( U474 VDD )
+   ( U473 VDD )
+
+
+   + USE POWER
+   ;
+ - VSS
+   ( i_rx_phy\/rxd_r_reg VSS )
+   ( i_rx_phy\/rxd_s_reg VSS )
+   ( i_rx_phy\/rxd_s1_reg VSS )
+   ( i_rx_phy\/rxd_s0_reg VSS )
+   ( i_rx_phy\/se0_r_reg VSS )
+   ( i_rx_phy\/rxdp_s_reg VSS )
+   ( i_rx_phy\/rxdp_s_r_reg VSS )
+   ( i_rx_phy\/rxdp_s0_reg VSS )
+   ( i_rx_phy\/rxdn_s_reg VSS )
+   ( i_rx_phy\/rxdn_s_r_reg VSS )
+   ( i_rx_phy\/rxdn_s0_reg VSS )
+   ( i_rx_phy\/fs_ce_reg VSS )
+   ( i_rx_phy\/se0_s_reg VSS )
+   ( i_rx_phy\/sd_r_reg VSS )
+   ( i_rx_phy\/fs_state_reg\[0\] VSS )
+   ( i_rx_phy\/rx_valid_r_reg VSS )
+   ( i_rx_phy\/rx_valid1_reg VSS )
+   ( i_rx_phy\/bit_cnt_reg\[2\] VSS )
+   ( i_rx_phy\/bit_cnt_reg\[1\] VSS )
+   ( i_rx_phy\/bit_cnt_reg\[0\] VSS )
+   ( i_rx_phy\/shift_en_reg VSS )
+   ( i_rx_phy\/dpll_state_reg\[0\] VSS )
+   ( i_tx_phy\/append_eop_sync3_reg VSS )
+   ( i_tx_phy\/append_eop_reg VSS )
+   ( i_tx_phy\/sft_done_r_reg VSS )
+   ( i_tx_phy\/sft_done_reg VSS )
+   ( i_tx_phy\/sd_raw_o_reg VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[7\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[7\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[6\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[6\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[5\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[5\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[4\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[3\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[2\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[1\] VSS )
+   ( i_tx_phy\/hold_reg_d_reg\[0\] VSS )
+   ( i_tx_phy\/ld_data_reg VSS )
+   ( i_tx_phy\/data_done_reg VSS )
+   ( i_tx_phy\/tx_ip_reg VSS )
+   ( i_rx_phy\/fs_ce_r2_reg VSS )
+   ( i_rx_phy\/fs_ce_r1_reg VSS )
+   ( i_rx_phy\/dpll_state_reg\[1\] VSS )
+   ( i_rx_phy\/rx_en_reg VSS )
+   ( i_rx_phy\/sd_nrzi_reg VSS )
+   ( i_tx_phy\/append_eop_sync4_reg VSS )
+   ( i_tx_phy\/txoe_r2_reg VSS )
+   ( i_rx_phy\/fs_state_reg\[1\] VSS )
+   ( i_tx_phy\/txdn_reg VSS )
+   ( i_tx_phy\/sd_nrzi_o_reg VSS )
+   ( i_tx_phy\/bit_cnt_reg\[0\] VSS )
+   ( i_tx_phy\/append_eop_sync1_reg VSS )
+   ( i_tx_phy\/append_eop_sync2_reg VSS )
+   ( rst_cnt_reg\[0\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[0\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[1\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[2\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[3\] VSS )
+   ( i_tx_phy\/hold_reg_reg\[4\] VSS )
+   ( i_rx_phy\/rx_active_reg VSS )
+   ( i_rx_phy\/rxdn_s1_reg VSS )
+   ( i_rx_phy\/rxdp_s1_reg VSS )
+   ( i_rx_phy\/byte_err_reg VSS )
+   ( i_rx_phy\/sync_err_reg VSS )
+   ( usb_rst_reg VSS )
+   ( i_rx_phy\/bit_stuff_err_reg VSS )
+   ( i_tx_phy\/txoe_reg VSS )
+   ( i_rx_phy\/hold_reg_reg\[7\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[1\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[2\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[3\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[4\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[5\] VSS )
+   ( i_rx_phy\/hold_reg_reg\[6\] VSS )
+   ( i_tx_phy\/txdp_reg VSS )
+   ( i_rx_phy\/rx_valid_reg VSS )
+   ( i_rx_phy\/hold_reg_reg\[0\] VSS )
+   ( i_tx_phy\/TxReady_o_reg VSS )
+   ( U253 VSS )
+   ( U251 VSS )
+   ( U250 VSS )
+   ( U249 VSS )
+   ( U248 VSS )
+   ( U247 VSS )
+   ( U246 VSS )
+   ( U245 VSS )
+   ( U244 VSS )
+   ( U243 VSS )
+   ( U242 VSS )
+   ( U241 VSS )
+   ( U240 VSS )
+   ( U238 VSS )
+   ( i_tx_phy\/state_reg\[2\] VSS )
+   ( i_rx_phy\/one_cnt_reg\[2\] VSS )
+   ( i_tx_phy\/one_cnt_reg\[2\] VSS )
+   ( i_rx_phy\/one_cnt_reg\[1\] VSS )
+   ( i_tx_phy\/state_reg\[0\] VSS )
+   ( i_tx_phy\/state_reg\[1\] VSS )
+   ( i_tx_phy\/one_cnt_reg\[1\] VSS )
+   ( i_tx_phy\/bit_cnt_reg\[2\] VSS )
+   ( rst_cnt_reg\[2\] VSS )
+   ( rst_cnt_reg\[4\] VSS )
+   ( i_tx_phy\/one_cnt_reg\[0\] VSS )
+   ( i_rx_phy\/one_cnt_reg\[0\] VSS )
+   ( rst_cnt_reg\[1\] VSS )
+   ( rst_cnt_reg\[3\] VSS )
+   ( i_tx_phy\/tx_ip_sync_reg VSS )
+   ( i_tx_phy\/bit_cnt_reg\[1\] VSS )
+   ( i_rx_phy\/fs_state_reg\[2\] VSS )
+   ( i_tx_phy\/sd_bs_o_reg VSS )
+   ( i_tx_phy\/txoe_r1_reg VSS )
+   ( U291 VSS )
+   ( U290 VSS )
+   ( U289 VSS )
+   ( U288 VSS )
+   ( U287 VSS )
+   ( U286 VSS )
+   ( U285 VSS )
+   ( U284 VSS )
+   ( U283 VSS )
+   ( U282 VSS )
+   ( U281 VSS )
+   ( U280 VSS )
+   ( U279 VSS )
+   ( U278 VSS )
+   ( U277 VSS )
+   ( U276 VSS )
+   ( U275 VSS )
+   ( U274 VSS )
+   ( U272 VSS )
+   ( U271 VSS )
+   ( U270 VSS )
+   ( U269 VSS )
+   ( U268 VSS )
+   ( U267 VSS )
+   ( U266 VSS )
+   ( U265 VSS )
+   ( U263 VSS )
+   ( U262 VSS )
+   ( U261 VSS )
+   ( U260 VSS )
+   ( U259 VSS )
+   ( U258 VSS )
+   ( U257 VSS )
+   ( U256 VSS )
+   ( U255 VSS )
+   ( U254 VSS )
+   ( U324 VSS )
+   ( U323 VSS )
+   ( U322 VSS )
+   ( U321 VSS )
+   ( U320 VSS )
+   ( U319 VSS )
+   ( U318 VSS )
+   ( U317 VSS )
+   ( U316 VSS )
+   ( U315 VSS )
+   ( U314 VSS )
+   ( U313 VSS )
+   ( U312 VSS )
+   ( U311 VSS )
+   ( U310 VSS )
+   ( U309 VSS )
+   ( U308 VSS )
+   ( U307 VSS )
+   ( U306 VSS )
+   ( U305 VSS )
+   ( U303 VSS )
+   ( U302 VSS )
+   ( U301 VSS )
+   ( U300 VSS )
+   ( U299 VSS )
+   ( U298 VSS )
+   ( U297 VSS )
+   ( U296 VSS )
+   ( U295 VSS )
+   ( U294 VSS )
+   ( U293 VSS )
+   ( U292 VSS )
+   ( U364 VSS )
+   ( U363 VSS )
+   ( U362 VSS )
+   ( U361 VSS )
+   ( U360 VSS )
+   ( U359 VSS )
+   ( U358 VSS )
+   ( U357 VSS )
+   ( U356 VSS )
+   ( U355 VSS )
+   ( U354 VSS )
+   ( U353 VSS )
+   ( U347 VSS )
+   ( U346 VSS )
+   ( U331 VSS )
+   ( U330 VSS )
+   ( U327 VSS )
+   ( U326 VSS )
+   ( U391 VSS )
+   ( U390 VSS )
+   ( U389 VSS )
+   ( U388 VSS )
+   ( U387 VSS )
+   ( U386 VSS )
+   ( U385 VSS )
+   ( U384 VSS )
+   ( U383 VSS )
+   ( U382 VSS )
+   ( U381 VSS )
+   ( U380 VSS )
+   ( U379 VSS )
+   ( U378 VSS )
+   ( U377 VSS )
+   ( U376 VSS )
+   ( U375 VSS )
+   ( U374 VSS )
+   ( U373 VSS )
+   ( U372 VSS )
+   ( U371 VSS )
+   ( U370 VSS )
+   ( U369 VSS )
+   ( U368 VSS )
+   ( U367 VSS )
+   ( U366 VSS )
+   ( U365 VSS )
+   ( U418 VSS )
+   ( U417 VSS )
+   ( U416 VSS )
+   ( U415 VSS )
+   ( U414 VSS )
+   ( U413 VSS )
+   ( U412 VSS )
+   ( U411 VSS )
+   ( U410 VSS )
+   ( U409 VSS )
+   ( U408 VSS )
+   ( U407 VSS )
+   ( U406 VSS )
+   ( U405 VSS )
+   ( U404 VSS )
+   ( U403 VSS )
+   ( U402 VSS )
+   ( U401 VSS )
+   ( U400 VSS )
+   ( U399 VSS )
+   ( U398 VSS )
+   ( U397 VSS )
+   ( U396 VSS )
+   ( U395 VSS )
+   ( U394 VSS )
+   ( U393 VSS )
+   ( U392 VSS )
+   ( U445 VSS )
+   ( U444 VSS )
+   ( U443 VSS )
+   ( U442 VSS )
+   ( U441 VSS )
+   ( U440 VSS )
+   ( U439 VSS )
+   ( U438 VSS )
+   ( U437 VSS )
+   ( U436 VSS )
+   ( U435 VSS )
+   ( U434 VSS )
+   ( U433 VSS )
+   ( U432 VSS )
+   ( U431 VSS )
+   ( U430 VSS )
+   ( U429 VSS )
+   ( U428 VSS )
+   ( U427 VSS )
+   ( U426 VSS )
+   ( U425 VSS )
+   ( U424 VSS )
+   ( U423 VSS )
+   ( U422 VSS )
+   ( U421 VSS )
+   ( U420 VSS )
+   ( U419 VSS )
+   ( U472 VSS )
+   ( U471 VSS )
+   ( U470 VSS )
+   ( U469 VSS )
+   ( U468 VSS )
+   ( U467 VSS )
+   ( U466 VSS )
+   ( U465 VSS )
+   ( U464 VSS )
+   ( U463 VSS )
+   ( U462 VSS )
+   ( U461 VSS )
+   ( U460 VSS )
+   ( U459 VSS )
+   ( U458 VSS )
+   ( U457 VSS )
+   ( U456 VSS )
+   ( U455 VSS )
+   ( U454 VSS )
+   ( U453 VSS )
+   ( U452 VSS )
+   ( U451 VSS )
+   ( U450 VSS )
+   ( U449 VSS )
+   ( U448 VSS )
+   ( U447 VSS )
+   ( U446 VSS )
+   ( U497 VSS )
+   ( U496 VSS )
+   ( U495 VSS )
+   ( U494 VSS )
+   ( U493 VSS )
+   ( U492 VSS )
+   ( U491 VSS )
+   ( U490 VSS )
+   ( U488 VSS )
+   ( U487 VSS )
+   ( U486 VSS )
+   ( U485 VSS )
+   ( U484 VSS )
+   ( U483 VSS )
+   ( U482 VSS )
+   ( U481 VSS )
+   ( U480 VSS )
+   ( U479 VSS )
+   ( U478 VSS )
+   ( U477 VSS )
+   ( U476 VSS )
+   ( U475 VSS )
+   ( U474 VSS )
+   ( U473 VSS )
+
+
+   + USE GROUND
+   ;
+END SPECIALNETS
+NETS 425 ;
+ - n66
+   ( U67 A )
+   ( U66 Y )
+
+   + USE SIGNAL
+   ;
+ - n67
+   ( U23 A )
+   ( U67 Y )
+
+   + USE SIGNAL
+   ;
+ - n68
+   ( U69 A )
+   ( U68 Y )
+
+   + USE SIGNAL
+   ;
+ - n69
+   ( U24 A )
+   ( U69 Y )
+
+   + USE SIGNAL
+   ;
+ - n70
+   ( U26 A )
+   ( U70 Y )
+
+   + USE SIGNAL
+   ;
+ - n71
+   ( U72 A )
+   ( U71 Y )
+
+   + USE SIGNAL
+   ;
+ - n72
+   ( U346 A )
+   ( U72 Y )
+
+   + USE SIGNAL
+   ;
+ - n73
+   ( U74 A )
+   ( U73 Y )
+
+   + USE SIGNAL
+   ;
+ - n74
+   ( U3 A )
+   ( U74 Y )
+
+   + USE SIGNAL
+   ;
+ - n75
+   ( U76 A )
+   ( U75 Y )
+
+   + USE SIGNAL
+   ;
+ - n76
+   ( U330 A )
+   ( U76 Y )
+
+   + USE SIGNAL
+   ;
+ - n77
+   ( U78 A )
+   ( U77 Y )
+
+   + USE SIGNAL
+   ;
+ - n78
+   ( U4 A )
+   ( U78 Y )
+
+   + USE SIGNAL
+   ;
+ - n79
+   ( U80 A )
+   ( U79 Y )
+
+   + USE SIGNAL
+   ;
+ - n80
+   ( U326 A )
+   ( U80 Y )
+
+   + USE SIGNAL
+   ;
+ - n26
+   ( U27 A )
+   ( U26 Y )
+
+   + USE SIGNAL
+   ;
+ - n27
+   ( U10 A )
+   ( U27 Y )
+
+   + USE SIGNAL
+   ;
+ - n28
+   ( U29 A )
+   ( U28 Y )
+
+   + USE SIGNAL
+   ;
+ - n29
+   ( U1 A )
+   ( U29 Y )
+
+   + USE SIGNAL
+   ;
+ - n30
+   ( U31 A )
+   ( U30 Y )
+
+   + USE SIGNAL
+   ;
+ - n31
+   ( U5 A )
+   ( U31 Y )
+
+   + USE SIGNAL
+   ;
+ - n32
+   ( U33 A )
+   ( U32 Y )
+
+   + USE SIGNAL
+   ;
+ - n33
+   ( U34 A )
+   ( U33 Y )
+
+   + USE SIGNAL
+   ;
+ - n34
+   ( U35 A )
+   ( U34 Y )
+
+   + USE SIGNAL
+   ;
+ - n35
+   ( U53 A )
+   ( U35 Y )
+
+   + USE SIGNAL
+   ;
+ - n36
+   ( U63 A )
+   ( U36 Y )
+
+   + USE SIGNAL
+   ;
+ - n37
+   ( U64 A )
+   ( U37 Y )
+
+   + USE SIGNAL
+   ;
+ - n38
+   ( U39 A )
+   ( U38 Y )
+
+   + USE SIGNAL
+   ;
+ - n39
+   ( U66 A )
+   ( U39 Y )
+
+   + USE SIGNAL
+   ;
+ - n40
+   ( U41 A )
+   ( U40 Y )
+
+   + USE SIGNAL
+   ;
+ - n41
+   ( U68 A )
+   ( U41 Y )
+
+   + USE SIGNAL
+   ;
+ - n42
+   ( U70 A )
+   ( U42 Y )
+
+   + USE SIGNAL
+   ;
+ - n43
+   ( U44 A )
+   ( U43 Y )
+
+   + USE SIGNAL
+   ;
+ - n44
+   ( U71 A )
+   ( U44 Y )
+
+   + USE SIGNAL
+   ;
+ - n45
+   ( U46 A )
+   ( U45 Y )
+
+   + USE SIGNAL
+   ;
+ - n46
+   ( U55 A )
+   ( U46 Y )
+
+   + USE SIGNAL
+   ;
+ - n47
+   ( U48 A )
+   ( U47 Y )
+
+   + USE SIGNAL
+   ;
+ - n48
+   ( U75 A )
+   ( U48 Y )
+
+   + USE SIGNAL
+   ;
+ - n49
+   ( U50 A )
+   ( U49 Y )
+
+   + USE SIGNAL
+   ;
+ - n50
+   ( U57 A )
+   ( U50 Y )
+
+   + USE SIGNAL
+   ;
+ - n51
+   ( U52 A )
+   ( U51 Y )
+
+   + USE SIGNAL
+   ;
+ - n52
+   ( U59 A )
+   ( U52 Y )
+
+   + USE SIGNAL
+   ;
+ - n53
+   ( U54 A )
+   ( U53 Y )
+
+   + USE SIGNAL
+   ;
+ - n54
+   ( U61 A )
+   ( U54 Y )
+
+   + USE SIGNAL
+   ;
+ - n55
+   ( U56 A )
+   ( U55 Y )
+
+   + USE SIGNAL
+   ;
+ - n56
+   ( U73 A )
+   ( U56 Y )
+
+   + USE SIGNAL
+   ;
+ - n57
+   ( U58 A )
+   ( U57 Y )
+
+   + USE SIGNAL
+   ;
+ - n58
+   ( U77 A )
+   ( U58 Y )
+
+   + USE SIGNAL
+   ;
+ - n59
+   ( U60 A )
+   ( U59 Y )
+
+   + USE SIGNAL
+   ;
+ - n60
+   ( U79 A )
+   ( U60 Y )
+
+   + USE SIGNAL
+   ;
+ - n61
+   ( U62 A )
+   ( U61 Y )
+
+   + USE SIGNAL
+   ;
+ - n62
+   ( U11 A )
+   ( U62 Y )
+
+   + USE SIGNAL
+   ;
+ - n63
+   ( U20 A )
+   ( U63 Y )
+
+   + USE SIGNAL
+   ;
+ - n64
+   ( U65 A )
+   ( U64 Y )
+
+   + USE SIGNAL
+   ;
+ - n65
+   ( U21 A )
+   ( U65 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/se0_r
+   ( U263 A )
+   ( i_rx_phy\/se0_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n205
+   ( U254 Y )
+   ( i_tx_phy\/append_eop_reg D )
+
+   + USE SIGNAL
+   ;
+ - n179
+   ( U253 Y )
+   ( i_tx_phy\/hold_reg_reg\[7\] D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N32
+   ( U251 Y )
+   ( i_rx_phy\/dpll_state_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n178
+   ( U250 Y )
+   ( i_tx_phy\/tx_ip_reg D )
+
+   + USE SIGNAL
+   ;
+ - n216
+   ( U248 Y )
+   ( i_rx_phy\/rx_active_reg D )
+
+   + USE SIGNAL
+   ;
+ - n167
+   ( U246 Y )
+   ( i_rx_phy\/rx_valid1_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N20
+   ( U245 Y )
+   ( i_rx_phy\/sync_err_reg D )
+
+   + USE SIGNAL
+   ;
+ - n192
+   ( U240 Y )
+   ( i_tx_phy\/bit_cnt_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - clk
+   ( PIN clk )
+   ( i_rx_phy\/rxdn_s_r_reg CK )
+   ( i_rx_phy\/rxdn_s0_reg CK )
+   ( i_rx_phy\/rxd_s_reg CK )
+   ( i_rx_phy\/rxd_s1_reg CK )
+   ( i_rx_phy\/rxd_s0_reg CK )
+   ( i_rx_phy\/se0_r_reg CK )
+   ( i_rx_phy\/rxdp_s_reg CK )
+   ( i_rx_phy\/rxdp_s_r_reg CK )
+   ( i_rx_phy\/rxdp_s0_reg CK )
+   ( i_rx_phy\/rxdn_s_reg CK )
+   ( i_tx_phy\/ld_data_reg CK )
+   ( i_tx_phy\/data_done_reg CK )
+   ( i_tx_phy\/tx_ip_reg CK )
+   ( i_rx_phy\/fs_ce_r2_reg CK )
+   ( i_rx_phy\/fs_ce_r1_reg CK )
+   ( i_rx_phy\/dpll_state_reg\[1\] CK )
+   ( i_rx_phy\/rx_en_reg CK )
+   ( i_rx_phy\/rxd_r_reg CK )
+   ( i_tx_phy\/hold_reg_reg\[6\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[5\] CK )
+   ( i_tx_phy\/hold_reg_reg\[5\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[4\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[3\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[2\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[1\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[0\] CK )
+   ( i_tx_phy\/append_eop_sync3_reg CK )
+   ( i_tx_phy\/append_eop_reg CK )
+   ( i_tx_phy\/sft_done_r_reg CK )
+   ( i_tx_phy\/sft_done_reg CK )
+   ( i_tx_phy\/sd_raw_o_reg CK )
+   ( i_tx_phy\/hold_reg_d_reg\[7\] CK )
+   ( i_tx_phy\/hold_reg_reg\[7\] CK )
+   ( i_tx_phy\/hold_reg_d_reg\[6\] CK )
+   ( i_rx_phy\/fs_state_reg\[0\] CK )
+   ( i_rx_phy\/rx_valid_r_reg CK )
+   ( i_rx_phy\/rx_valid1_reg CK )
+   ( i_rx_phy\/bit_cnt_reg\[2\] CK )
+   ( i_rx_phy\/bit_cnt_reg\[1\] CK )
+   ( i_rx_phy\/bit_cnt_reg\[0\] CK )
+   ( i_rx_phy\/shift_en_reg CK )
+   ( i_rx_phy\/dpll_state_reg\[0\] CK )
+   ( i_rx_phy\/hold_reg_reg\[6\] CK )
+   ( i_tx_phy\/txdp_reg CK )
+   ( i_rx_phy\/rx_valid_reg CK )
+   ( i_rx_phy\/hold_reg_reg\[0\] CK )
+   ( i_tx_phy\/TxReady_o_reg CK )
+   ( i_rx_phy\/fs_ce_reg CK )
+   ( i_rx_phy\/se0_s_reg CK )
+   ( i_rx_phy\/sd_r_reg CK )
+   ( i_rx_phy\/bit_stuff_err_reg CK )
+   ( i_tx_phy\/txoe_reg CK )
+   ( i_rx_phy\/hold_reg_reg\[7\] CK )
+   ( i_rx_phy\/hold_reg_reg\[1\] CK )
+   ( i_rx_phy\/hold_reg_reg\[2\] CK )
+   ( i_rx_phy\/hold_reg_reg\[3\] CK )
+   ( i_rx_phy\/hold_reg_reg\[4\] CK )
+   ( i_rx_phy\/hold_reg_reg\[5\] CK )
+   ( i_tx_phy\/hold_reg_reg\[3\] CK )
+   ( i_tx_phy\/hold_reg_reg\[4\] CK )
+   ( i_rx_phy\/rx_active_reg CK )
+   ( i_rx_phy\/rxdn_s1_reg CK )
+   ( i_rx_phy\/rxdp_s1_reg CK )
+   ( i_rx_phy\/byte_err_reg CK )
+   ( i_rx_phy\/sync_err_reg CK )
+   ( usb_rst_reg CK )
+   ( i_tx_phy\/sd_nrzi_o_reg CK )
+   ( i_tx_phy\/bit_cnt_reg\[0\] CK )
+   ( i_tx_phy\/append_eop_sync1_reg CK )
+   ( i_tx_phy\/append_eop_sync2_reg CK )
+   ( rst_cnt_reg\[0\] CK )
+   ( i_tx_phy\/hold_reg_reg\[0\] CK )
+   ( i_tx_phy\/hold_reg_reg\[1\] CK )
+   ( i_tx_phy\/hold_reg_reg\[2\] CK )
+   ( i_rx_phy\/fs_state_reg\[2\] CK )
+   ( i_tx_phy\/sd_bs_o_reg CK )
+   ( i_tx_phy\/txoe_r1_reg CK )
+   ( i_rx_phy\/sd_nrzi_reg CK )
+   ( i_tx_phy\/append_eop_sync4_reg CK )
+   ( i_tx_phy\/txoe_r2_reg CK )
+   ( i_rx_phy\/fs_state_reg\[1\] CK )
+   ( i_tx_phy\/txdn_reg CK )
+   ( rst_cnt_reg\[2\] CK )
+   ( rst_cnt_reg\[4\] CK )
+   ( i_tx_phy\/one_cnt_reg\[0\] CK )
+   ( i_rx_phy\/one_cnt_reg\[0\] CK )
+   ( rst_cnt_reg\[1\] CK )
+   ( rst_cnt_reg\[3\] CK )
+   ( i_tx_phy\/tx_ip_sync_reg CK )
+   ( i_tx_phy\/bit_cnt_reg\[1\] CK )
+   ( i_tx_phy\/state_reg\[2\] CK )
+   ( i_rx_phy\/one_cnt_reg\[2\] CK )
+   ( i_tx_phy\/one_cnt_reg\[2\] CK )
+   ( i_rx_phy\/one_cnt_reg\[1\] CK )
+   ( i_tx_phy\/state_reg\[0\] CK )
+   ( i_tx_phy\/state_reg\[1\] CK )
+   ( i_tx_phy\/one_cnt_reg\[1\] CK )
+   ( i_tx_phy\/bit_cnt_reg\[2\] CK )
+
+   + USE SIGNAL
+   ;
+ - TxReady_o
+   ( PIN TxReady_o )
+   ( i_tx_phy\/TxReady_o_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_ce_r2
+   ( i_rx_phy\/fs_ce_reg D )
+   ( i_rx_phy\/fs_ce_r2_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_ce_r1
+   ( i_rx_phy\/fs_ce_r2_reg D )
+   ( i_rx_phy\/fs_ce_r1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n1
+   ( U404 A0 )
+   ( U309 A )
+   ( U402 A )
+   ( U396 A )
+   ( U320 A )
+   ( U375 C )
+   ( U475 A0 )
+   ( U312 A )
+   ( U2 A )
+   ( U479 B0 )
+   ( U436 B0 )
+   ( U322 A )
+   ( U482 A )
+   ( U469 C0 )
+   ( U381 A )
+   ( U454 A )
+   ( U426 A1 )
+   ( U317 A )
+   ( U310 B )
+   ( U1 Y )
+
+   + USE SIGNAL
+   ;
+ - n2
+   ( U249 B )
+   ( U251 A )
+   ( U429 B0 )
+   ( U246 A )
+   ( U248 A )
+   ( U431 B0 )
+   ( U257 B )
+   ( U250 A )
+   ( U425 B0 )
+   ( U254 B )
+   ( U238 A )
+   ( U2 Y )
+
+   + USE SIGNAL
+   ;
+ - n3
+   ( U362 A0 )
+   ( U363 B )
+   ( U3 Y )
+
+   + USE SIGNAL
+   ;
+ - n4
+   ( i_rx_phy\/rxdp_s0_reg D )
+   ( U4 Y )
+
+   + USE SIGNAL
+   ;
+ - n5
+   ( U375 B )
+   ( U457 BN )
+   ( U469 B0 )
+   ( U422 A0 )
+   ( U5 Y )
+
+   + USE SIGNAL
+   ;
+ - n6
+   ( U461 A1 )
+   ( U6 Y )
+
+   + USE SIGNAL
+   ;
+ - n7
+   ( U462 A1 )
+   ( U7 Y )
+
+   + USE SIGNAL
+   ;
+ - n8
+   ( U463 A1 )
+   ( U8 Y )
+
+   + USE SIGNAL
+   ;
+ - n9
+   ( U464 A1 )
+   ( U9 Y )
+
+   + USE SIGNAL
+   ;
+ - n10
+   ( U466 A1 )
+   ( U10 Y )
+
+   + USE SIGNAL
+   ;
+ - n11
+   ( U460 A1 )
+   ( U11 Y )
+
+   + USE SIGNAL
+   ;
+ - n12
+   ( U486 A1 )
+   ( U429 A1 )
+   ( U488 A0 )
+   ( U431 A1 )
+   ( U420 B1 )
+   ( U487 B1 )
+   ( U436 A0 )
+   ( U12 Y )
+
+   + USE SIGNAL
+   ;
+ - n13
+   ( U364 A )
+   ( U260 A )
+   ( U439 B0 )
+   ( U438 B0 )
+   ( U13 Y )
+
+   + USE SIGNAL
+   ;
+ - n14
+   ( U434 A0 )
+   ( U435 B0 )
+   ( U14 Y )
+
+   + USE SIGNAL
+   ;
+ - n15
+   ( U497 A0 )
+   ( U490 A0 )
+   ( U491 A0 )
+   ( U496 A0 )
+   ( U493 A0 )
+   ( U492 A0 )
+   ( U494 A0 )
+   ( U495 A0 )
+   ( U15 Y )
+
+   + USE SIGNAL
+   ;
+ - n16
+   ( U17 A )
+   ( U16 Y )
+
+   + USE SIGNAL
+   ;
+ - n17
+   ( U30 A )
+   ( U17 Y )
+
+   + USE SIGNAL
+   ;
+ - n18
+   ( U19 A )
+   ( U18 Y )
+
+   + USE SIGNAL
+   ;
+ - n19
+   ( U6 A )
+   ( U19 Y )
+
+   + USE SIGNAL
+   ;
+ - n20
+   ( U7 A )
+   ( U20 Y )
+
+   + USE SIGNAL
+   ;
+ - n21
+   ( U22 A )
+   ( U21 Y )
+
+   + USE SIGNAL
+   ;
+ - n22
+   ( U8 A )
+   ( U22 Y )
+
+   + USE SIGNAL
+   ;
+ - n23
+   ( U9 A )
+   ( U23 Y )
+
+   + USE SIGNAL
+   ;
+ - n24
+   ( U25 A )
+   ( U24 Y )
+
+   + USE SIGNAL
+   ;
+ - n25
+   ( U465 A1 )
+   ( U25 Y )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[6]
+   ( PIN DataOut_i[6] )
+   ( U42 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[5]
+   ( PIN DataOut_i[5] )
+   ( U40 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[4]
+   ( PIN DataOut_i[4] )
+   ( U38 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[3]
+   ( PIN DataOut_i[3] )
+   ( U37 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[2]
+   ( PIN DataOut_i[2] )
+   ( U36 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[1]
+   ( PIN DataOut_i[1] )
+   ( U18 A )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[0]
+   ( PIN DataOut_i[0] )
+   ( U32 A )
+
+   + USE SIGNAL
+   ;
+ - n224
+   ( U331 A )
+   ( U330 Y )
+
+   + USE SIGNAL
+   ;
+ - n225
+   ( U331 Y )
+   ( i_rx_phy\/rxd_s0_reg D )
+
+   + USE SIGNAL
+   ;
+ - rxd
+   ( PIN rxd )
+   ( U47 A )
+
+   + USE SIGNAL
+   ;
+ - rxdp
+   ( PIN rxdp )
+   ( U49 A )
+
+   + USE SIGNAL
+   ;
+ - n220
+   ( U327 A )
+   ( U326 Y )
+
+   + USE SIGNAL
+   ;
+ - n221
+   ( U327 Y )
+   ( i_rx_phy\/rxdn_s0_reg D )
+
+   + USE SIGNAL
+   ;
+ - rxdn
+   ( PIN rxdn )
+   ( U51 A )
+
+   + USE SIGNAL
+   ;
+ - rst
+   ( PIN rst )
+   ( U28 A )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/state[2]
+   ( U324 A0 )
+   ( U313 A )
+   ( U300 A )
+   ( i_tx_phy\/state_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n265
+   ( U319 Y )
+   ( U318 C )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N136
+   ( U318 Y )
+   ( i_rx_phy\/bit_stuff_err_reg D )
+
+   + USE SIGNAL
+   ;
+ - n171
+   ( U316 Y )
+   ( i_rx_phy\/one_cnt_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/sync_err
+   ( U315 B )
+   ( i_rx_phy\/sync_err_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/byte_err
+   ( U315 A )
+   ( i_rx_phy\/byte_err_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/bit_stuff_err
+   ( U315 C )
+   ( i_rx_phy\/bit_stuff_err_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/sft_done
+   ( U314 A )
+   ( i_tx_phy\/sft_done_r_reg D )
+   ( i_tx_phy\/sft_done_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/sft_done_r
+   ( U314 BN )
+   ( i_tx_phy\/sft_done_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/sd_raw_o
+   ( U308 A )
+   ( i_tx_phy\/sd_raw_o_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/one_cnt[1]
+   ( U306 A )
+   ( U287 A )
+   ( i_tx_phy\/one_cnt_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/one_cnt[1]
+   ( U290 A )
+   ( U266 A )
+   ( i_rx_phy\/one_cnt_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdn_s
+   ( U285 A )
+   ( U269 A )
+   ( i_rx_phy\/rxdn_s_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n257
+   ( U275 Y )
+   ( U269 B )
+   ( U267 B )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/append_eop_sync4
+   ( U274 A )
+   ( i_tx_phy\/append_eop_sync4_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N166
+   ( U263 Y )
+   ( i_rx_phy\/byte_err_reg D )
+
+   + USE SIGNAL
+   ;
+ - n256
+   ( U372 B )
+   ( U368 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/N87
+   ( U372 Y )
+   ( i_tx_phy\/sd_raw_o_reg D )
+
+   + USE SIGNAL
+   ;
+ - n254
+   ( U371 A1 )
+   ( U369 Y )
+
+   + USE SIGNAL
+   ;
+ - n253
+   ( U371 B0 )
+   ( U370 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[5]
+   ( U370 B1 )
+   ( i_tx_phy\/hold_reg_d_reg\[5\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[1]
+   ( U370 A1 )
+   ( i_tx_phy\/hold_reg_d_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[0]
+   ( U369 B0 )
+   ( i_tx_phy\/hold_reg_d_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[4]
+   ( U369 A1 )
+   ( i_tx_phy\/hold_reg_d_reg\[4\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/bit_cnt[2]
+   ( U369 A0 )
+   ( U366 A0 )
+   ( U278 A )
+   ( U268 B )
+   ( i_tx_phy\/bit_cnt_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n252
+   ( U368 A1 )
+   ( U366 Y )
+
+   + USE SIGNAL
+   ;
+ - n251
+   ( U368 C0 )
+   ( U367 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[7]
+   ( U367 B1 )
+   ( i_tx_phy\/hold_reg_d_reg\[7\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[3]
+   ( U367 A1 )
+   ( i_tx_phy\/hold_reg_d_reg\[3\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[2]
+   ( U366 B0 )
+   ( i_tx_phy\/hold_reg_d_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg_d[6]
+   ( U366 A1 )
+   ( i_tx_phy\/hold_reg_d_reg\[6\] Q )
+
+   + USE SIGNAL
+   ;
+ - txdn
+   ( PIN txdn )
+   ( U365 B1N )
+   ( i_tx_phy\/txdn_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n204
+   ( U365 Y )
+   ( i_tx_phy\/txdn_reg D )
+
+   + USE SIGNAL
+   ;
+ - n250
+   ( U365 A0 )
+   ( U362 Y )
+
+   + USE SIGNAL
+   ;
+ - n249
+   ( U364 B )
+   ( U363 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/append_eop_sync3
+   ( U363 A )
+   ( U362 B0 )
+   ( U296 A )
+   ( i_tx_phy\/append_eop_sync3_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdn_s0
+   ( U361 B )
+   ( i_rx_phy\/rxdn_s1_reg D )
+   ( i_rx_phy\/rxdn_s0_reg Q )
+
+   + USE SIGNAL
+   ;
+ - LineState_o[1]
+   ( PIN LineState_o[1] )
+   ( U361 A )
+   ( U301 A )
+   ( i_rx_phy\/rxdn_s1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdp_s0
+   ( U360 B )
+   ( i_rx_phy\/rxdp_s1_reg D )
+   ( i_rx_phy\/rxdp_s0_reg Q )
+
+   + USE SIGNAL
+   ;
+ - LineState_o[0]
+   ( PIN LineState_o[0] )
+   ( U360 A )
+   ( U301 B )
+   ( i_rx_phy\/rxdp_s1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N165
+   ( U359 Y )
+   ( i_rx_phy\/rx_valid_reg D )
+
+   + USE SIGNAL
+   ;
+ - n248
+   ( U358 A )
+   ( U315 Y )
+
+   + USE SIGNAL
+   ;
+ - RxError_o
+   ( PIN RxError_o )
+   ( U358 Y )
+
+   + USE SIGNAL
+   ;
+ - n247
+   ( U357 Y )
+   ( U316 B0 )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/one_cnt[2]
+   ( U357 C0 )
+   ( U316 A0 )
+   ( U266 B )
+   ( i_rx_phy\/one_cnt_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n246
+   ( U357 A0 )
+   ( U354 B )
+   ( U241 A )
+   ( U238 Y )
+
+   + USE SIGNAL
+   ;
+ - n266
+   ( U353 B )
+   ( U318 B )
+   ( U266 Y )
+
+   + USE SIGNAL
+   ;
+ - TxValid_i
+   ( PIN TxValid_i )
+   ( U16 A )
+
+   + USE SIGNAL
+   ;
+ - phy_tx_mode
+   ( PIN phy_tx_mode )
+   ( U45 A )
+
+   + USE SIGNAL
+   ;
+ - n240
+   ( U347 A )
+   ( U346 Y )
+
+   + USE SIGNAL
+   ;
+ - DataOut_i[7]
+   ( PIN DataOut_i[7] )
+   ( U43 A )
+
+   + USE SIGNAL
+   ;
+ - n275
+   ( U400 B0 )
+   ( U399 Y )
+
+   + USE SIGNAL
+   ;
+ - n276
+   ( U400 Y )
+   ( U248 B )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxd_s1
+   ( U398 B )
+   ( i_rx_phy\/rxd_s1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxd_s0
+   ( U398 CI )
+   ( i_rx_phy\/rxd_s1_reg D )
+   ( i_rx_phy\/rxd_s0_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n217
+   ( U398 CO )
+   ( i_rx_phy\/rxd_s_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_ce_d
+   ( U397 B0 )
+   ( U395 A1 )
+   ( U376 Y )
+   ( i_rx_phy\/fs_ce_r1_reg D )
+
+   + USE SIGNAL
+   ;
+ - n274
+   ( U397 Y )
+   ( U251 B )
+
+   + USE SIGNAL
+   ;
+ - n273
+   ( U397 A1 )
+   ( U395 B0 )
+   ( U262 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/dpll_state[1]
+   ( U397 A0 )
+   ( U376 A )
+   ( i_rx_phy\/dpll_state_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - n272
+   ( U396 B )
+   ( U395 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N31
+   ( U396 Y )
+   ( i_rx_phy\/dpll_state_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n271
+   ( U395 A0 )
+   ( U394 Y )
+   ( U262 B )
+
+   + USE SIGNAL
+   ;
+ - n270
+   ( U394 B0 )
+   ( U393 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxd_r
+   ( U394 A1 )
+   ( U393 A1 )
+   ( i_rx_phy\/rxd_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rx_en
+   ( U393 B0 )
+   ( U275 A )
+   ( i_rx_phy\/rx_en_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdp_s_r
+   ( U392 A )
+   ( i_rx_phy\/rxdp_s_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N26
+   ( U392 B )
+   ( U360 Y )
+   ( i_rx_phy\/rxdp_s_r_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N27
+   ( U392 Y )
+   ( i_rx_phy\/rxdp_s_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdn_s_r
+   ( U391 A )
+   ( i_rx_phy\/rxdn_s_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N28
+   ( U391 B )
+   ( U361 Y )
+   ( i_rx_phy\/rxdn_s_r_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/N29
+   ( U391 Y )
+   ( i_rx_phy\/rxdn_s_reg D )
+
+   + USE SIGNAL
+   ;
+ - n269
+   ( U390 Y )
+   ( U263 B )
+
+   + USE SIGNAL
+   ;
+ - RxActive_o
+   ( PIN RxActive_o )
+   ( U390 B0 )
+   ( U319 C )
+   ( U280 A )
+   ( i_rx_phy\/rx_active_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n267
+   ( U389 B )
+   ( U370 B0 )
+   ( U367 B0 )
+   ( U270 Y )
+
+   + USE SIGNAL
+   ;
+ - n268
+   ( U389 A )
+   ( U323 BN )
+   ( U306 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/N88
+   ( U389 Y )
+   ( i_tx_phy\/sft_done_reg D )
+
+   + USE SIGNAL
+   ;
+ - N26
+   ( U388 Y )
+   ( usb_rst_reg D )
+
+   + USE SIGNAL
+   ;
+ - n263
+   ( U384 A0 )
+   ( U370 A0 )
+   ( U367 A0 )
+   ( U268 Y )
+
+   + USE SIGNAL
+   ;
+ - n264
+   ( U384 Y )
+   ( U240 A )
+
+   + USE SIGNAL
+   ;
+ - n262
+   ( U384 B0 )
+   ( U383 Y )
+
+   + USE SIGNAL
+   ;
+ - n260
+   ( U383 C0 )
+   ( U369 B1 )
+   ( U366 B1 )
+   ( U278 Y )
+   ( U270 A )
+
+   + USE SIGNAL
+   ;
+ - n261
+   ( U383 A0 )
+   ( U382 A0 )
+   ( U247 Y )
+
+   + USE SIGNAL
+   ;
+ - n259
+   ( U380 Y )
+   ( U245 B )
+
+   + USE SIGNAL
+   ;
+ - n258
+   ( U380 A1 )
+   ( U378 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_state[0]
+   ( U380 A0 )
+   ( U320 B )
+   ( U309 B )
+   ( U276 A )
+   ( i_rx_phy\/fs_state_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n284
+   ( U378 A0N )
+   ( U309 C )
+   ( U269 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/dpll_state[0]
+   ( U376 BN )
+   ( U262 A )
+   ( i_rx_phy\/dpll_state_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/tx_ready_d
+   ( U375 A )
+   ( U374 Y )
+   ( i_tx_phy\/ld_data_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/N18
+   ( U375 Y )
+   ( i_tx_phy\/TxReady_o_reg D )
+
+   + USE SIGNAL
+   ;
+ - n255
+   ( U372 C )
+   ( U371 Y )
+
+   + USE SIGNAL
+   ;
+ - n304
+   ( U418 A2 )
+   ( U388 A )
+   ( U387 Y )
+
+   + USE SIGNAL
+   ;
+ - n302
+   ( U417 A0 )
+   ( U416 B0 )
+   ( U259 Y )
+
+   + USE SIGNAL
+   ;
+ - n301
+   ( U417 A1 )
+   ( U416 A1 )
+   ( U415 Y )
+
+   + USE SIGNAL
+   ;
+ - n300
+   ( U416 B1 )
+   ( U415 A0 )
+   ( U387 B )
+   ( U386 Y )
+
+   + USE SIGNAL
+   ;
+ - rst_cnt[3]
+   ( U416 A0 )
+   ( U387 A )
+   ( U259 A )
+   ( rst_cnt_reg\[3\] Q )
+
+   + USE SIGNAL
+   ;
+ - n209
+   ( U416 Y )
+   ( rst_cnt_reg\[3\] D )
+
+   + USE SIGNAL
+   ;
+ - n299
+   ( U415 B0 )
+   ( U412 A1 )
+   ( U410 B0 )
+   ( U310 Y )
+
+   + USE SIGNAL
+   ;
+ - n297
+   ( U414 B0 )
+   ( U413 Y )
+
+   + USE SIGNAL
+   ;
+ - n210
+   ( U414 Y )
+   ( rst_cnt_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - rst_cnt[2]
+   ( U414 A0 )
+   ( U413 B0 )
+   ( U386 BN )
+   ( rst_cnt_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n298
+   ( U414 A2 )
+   ( U386 A )
+   ( U385 Y )
+
+   + USE SIGNAL
+   ;
+ - n296
+   ( U413 A0 )
+   ( U411 B0 )
+   ( U258 Y )
+
+   + USE SIGNAL
+   ;
+ - n295
+   ( U413 A1 )
+   ( U411 A1 )
+   ( U410 Y )
+
+   + USE SIGNAL
+   ;
+ - n211
+   ( U412 Y )
+   ( rst_cnt_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n294
+   ( U412 B1 )
+   ( U288 Y )
+
+   + USE SIGNAL
+   ;
+ - rst_cnt[0]
+   ( U412 A0 )
+   ( U411 B1 )
+   ( U410 A0 )
+   ( U385 B )
+   ( U288 A )
+   ( rst_cnt_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - rst_cnt[1]
+   ( U411 A0 )
+   ( U385 A )
+   ( U258 A )
+   ( rst_cnt_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - n212
+   ( U411 Y )
+   ( rst_cnt_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - usb_rst
+   ( PIN usb_rst )
+   ( U409 AN )
+   ( usb_rst_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n293
+   ( U409 C )
+   ( U310 A )
+   ( U301 Y )
+
+   + USE SIGNAL
+   ;
+ - n290
+   ( U408 B0 )
+   ( U406 B0 )
+   ( U309 Y )
+
+   + USE SIGNAL
+   ;
+ - n213
+   ( U408 Y )
+   ( i_rx_phy\/fs_state_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - n292
+   ( U408 A0 )
+   ( U406 A0 )
+   ( U404 Y )
+
+   + USE SIGNAL
+   ;
+ - n291
+   ( U408 A1 )
+   ( U407 A1 )
+   ( U401 A1 )
+   ( U379 A0 )
+   ( U378 B0 )
+   ( U311 A )
+   ( U277 Y )
+
+   + USE SIGNAL
+   ;
+ - n289
+   ( U408 B1 )
+   ( U407 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_state[1]
+   ( U407 A0 )
+   ( U299 A )
+   ( U261 A )
+   ( i_rx_phy\/fs_state_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - n288
+   ( U407 A2 )
+   ( U405 B )
+   ( U244 Y )
+
+   + USE SIGNAL
+   ;
+ - n287
+   ( U407 B0 )
+   ( U406 A1 )
+   ( U405 A )
+   ( U379 A1 )
+   ( U299 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/fs_state[2]
+   ( U407 B1 )
+   ( U277 A )
+   ( i_rx_phy\/fs_state_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n214
+   ( U406 Y )
+   ( i_rx_phy\/fs_state_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n286
+   ( U406 B1 )
+   ( U405 Y )
+
+   + USE SIGNAL
+   ;
+ - n283
+   ( U404 A1 )
+   ( U400 A1 )
+   ( U379 B0 )
+   ( U267 Y )
+   ( U261 B )
+
+   + USE SIGNAL
+   ;
+ - n282
+   ( U404 A2 )
+   ( U402 B )
+   ( U401 A2 )
+   ( U380 B1 )
+   ( U311 C )
+   ( U276 Y )
+
+   + USE SIGNAL
+   ;
+ - n285
+   ( U404 B0 )
+   ( U403 A0 )
+   ( U249 Y )
+   ( U244 A )
+
+   + USE SIGNAL
+   ;
+ - n279
+   ( U403 B0 )
+   ( U320 Y )
+
+   + USE SIGNAL
+   ;
+ - n281
+   ( U403 A1 )
+   ( U380 B0 )
+   ( U379 Y )
+
+   + USE SIGNAL
+   ;
+ - n215
+   ( U403 Y )
+   ( i_rx_phy\/fs_state_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n280
+   ( U403 A2 )
+   ( U402 Y )
+
+   + USE SIGNAL
+   ;
+ - n277
+   ( U401 Y )
+   ( U249 A )
+
+   + USE SIGNAL
+   ;
+ - n278
+   ( U401 B0 )
+   ( U377 Y )
+   ( U320 C )
+   ( U311 B )
+   ( U245 A )
+
+   + USE SIGNAL
+   ;
+ - n328
+   ( U437 A0 )
+   ( U436 Y )
+
+   + USE SIGNAL
+   ;
+ - n327
+   ( U437 B1 )
+   ( U428 B1 )
+   ( U283 Y )
+
+   + USE SIGNAL
+   ;
+ - n326
+   ( U436 A1 )
+   ( U435 B1 )
+   ( U274 Y )
+
+   + USE SIGNAL
+   ;
+ - n199
+   ( U435 Y )
+   ( i_tx_phy\/append_eop_sync4_reg D )
+
+   + USE SIGNAL
+   ;
+ - n200
+   ( U434 Y )
+   ( i_tx_phy\/txoe_r1_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/txoe_r2
+   ( U433 B1N )
+   ( U432 A1 )
+   ( i_tx_phy\/txoe_r2_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n201
+   ( U433 Y )
+   ( i_tx_phy\/txoe_r2_reg D )
+
+   + USE SIGNAL
+   ;
+ - n324
+   ( U432 B0 )
+   ( U431 Y )
+
+   + USE SIGNAL
+   ;
+ - n202
+   ( U432 Y )
+   ( i_tx_phy\/txoe_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/txoe_r1
+   ( U432 A0 )
+   ( U284 A )
+   ( i_tx_phy\/txoe_r1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - txoe
+   ( PIN txoe )
+   ( U431 A0 )
+   ( i_tx_phy\/txoe_reg Q )
+   ( i_rx_phy\/rx_en_reg D )
+
+   + USE SIGNAL
+   ;
+ - n323
+   ( U430 A0 )
+   ( U362 A1 )
+   ( U298 Y )
+
+   + USE SIGNAL
+   ;
+ - n322
+   ( U430 A1 )
+   ( U365 A1 )
+   ( U364 Y )
+
+   + USE SIGNAL
+   ;
+ - n203
+   ( U430 Y )
+   ( i_tx_phy\/txdp_reg D )
+
+   + USE SIGNAL
+   ;
+ - n321
+   ( U430 B0 )
+   ( U429 Y )
+
+   + USE SIGNAL
+   ;
+ - txdp
+   ( PIN txdp )
+   ( U429 A0 )
+   ( i_tx_phy\/txdp_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n320
+   ( U428 Y )
+   ( U254 A )
+
+   + USE SIGNAL
+   ;
+ - n318
+   ( U428 A1 )
+   ( U271 Y )
+
+   + USE SIGNAL
+   ;
+ - n319
+   ( U428 A0 )
+   ( U424 A0 )
+   ( U373 A )
+   ( U265 Y )
+
+   + USE SIGNAL
+   ;
+ - n206
+   ( U427 Y )
+   ( i_tx_phy\/state_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n316
+   ( U427 A1 )
+   ( U426 B0 )
+   ( U242 Y )
+
+   + USE SIGNAL
+   ;
+ - n314
+   ( U425 A1 )
+   ( U424 Y )
+
+   + USE SIGNAL
+   ;
+ - n315
+   ( U425 A0 )
+   ( U423 Y )
+
+   + USE SIGNAL
+   ;
+ - n313
+   ( U425 A2 )
+   ( U374 A0 )
+   ( U373 Y )
+
+   + USE SIGNAL
+   ;
+ - n312
+   ( U424 A1 )
+   ( U374 A1N )
+   ( U313 Y )
+
+   + USE SIGNAL
+   ;
+ - n317
+   ( U424 B0 )
+   ( U374 B0 )
+   ( U314 Y )
+   ( U271 B )
+
+   + USE SIGNAL
+   ;
+ - n311
+   ( U423 B1 )
+   ( U422 Y )
+
+   + USE SIGNAL
+   ;
+ - n310
+   ( U421 B )
+   ( U291 Y )
+   ( U265 B )
+
+   + USE SIGNAL
+   ;
+ - n309
+   ( U420 A2 )
+   ( U419 Y )
+
+   + USE SIGNAL
+   ;
+ - n207
+   ( U420 Y )
+   ( i_rx_phy\/shift_en_reg D )
+
+   + USE SIGNAL
+   ;
+ - n308
+   ( U420 B0 )
+   ( U272 Y )
+   ( U255 B )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxdp_s
+   ( U419 AN )
+   ( U285 B )
+   ( U267 A )
+   ( i_rx_phy\/rxdp_s_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n307
+   ( U419 BN )
+   ( U401 A0 )
+   ( U378 B1 )
+   ( U261 Y )
+
+   + USE SIGNAL
+   ;
+ - n306
+   ( U419 C )
+   ( U400 A0 )
+   ( U311 Y )
+
+   + USE SIGNAL
+   ;
+ - n303
+   ( U418 B0 )
+   ( U417 Y )
+
+   + USE SIGNAL
+   ;
+ - n305
+   ( U258 B )
+   ( U418 A1 )
+   ( U415 A1 )
+   ( U414 A1 )
+   ( U412 B0 )
+   ( U410 A1 )
+   ( U409 Y )
+   ( U310 C )
+   ( U259 B )
+
+   + USE SIGNAL
+   ;
+ - n208
+   ( U418 Y )
+   ( rst_cnt_reg\[4\] D )
+
+   + USE SIGNAL
+   ;
+ - rst_cnt[4]
+   ( U418 A0 )
+   ( U417 B0 )
+   ( U388 BN )
+   ( rst_cnt_reg\[4\] Q )
+
+   + USE SIGNAL
+   ;
+ - n349
+   ( U456 A2 )
+   ( U454 Y )
+
+   + USE SIGNAL
+   ;
+ - n347
+   ( U455 A )
+   ( U427 B0 )
+   ( U426 Y )
+
+   + USE SIGNAL
+   ;
+ - n346
+   ( U455 B )
+   ( U454 B )
+   ( U422 B1 )
+   ( U421 A )
+   ( U317 B )
+   ( U300 Y )
+
+   + USE SIGNAL
+   ;
+ - n343
+   ( U453 B0 )
+   ( U452 Y )
+
+   + USE SIGNAL
+   ;
+ - n188
+   ( U453 Y )
+   ( i_tx_phy\/state_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n344
+   ( U453 A1 )
+   ( U317 Y )
+
+   + USE SIGNAL
+   ;
+ - n345
+   ( U453 A0 )
+   ( U452 A1 )
+   ( U324 Y )
+   ( U242 A )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/state[1]
+   ( U452 B0 )
+   ( U451 B )
+   ( U423 A0 )
+   ( U313 B )
+   ( U291 A )
+   ( i_tx_phy\/state_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/state[0]
+   ( U452 A0 )
+   ( U451 A )
+   ( U423 A1 )
+   ( U302 A )
+   ( U265 A )
+   ( i_tx_phy\/state_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n340
+   ( U450 B0 )
+   ( U449 Y )
+
+   + USE SIGNAL
+   ;
+ - n342
+   ( U450 A1 )
+   ( U449 A1 )
+   ( U448 B0N )
+   ( U448 A1 )
+   ( U287 Y )
+
+   + USE SIGNAL
+   ;
+ - n189
+   ( U450 Y )
+   ( i_tx_phy\/one_cnt_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/one_cnt[2]
+   ( U450 A0 )
+   ( U449 C0 )
+   ( U306 B )
+   ( i_tx_phy\/one_cnt_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n341
+   ( U450 A2 )
+   ( U448 A0 )
+   ( U447 Y )
+
+   + USE SIGNAL
+   ;
+ - n338
+   ( U449 B0 )
+   ( U448 B1N )
+   ( U307 Y )
+
+   + USE SIGNAL
+   ;
+ - n339
+   ( U449 A0 )
+   ( U447 B )
+   ( U243 Y )
+
+   + USE SIGNAL
+   ;
+ - n190
+   ( U448 Y )
+   ( i_tx_phy\/one_cnt_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/one_cnt[0]
+   ( U447 A )
+   ( U446 A0 )
+   ( U307 A0 )
+   ( U286 A )
+   ( i_tx_phy\/one_cnt_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n191
+   ( U446 Y )
+   ( i_tx_phy\/one_cnt_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n336
+   ( U446 B1 )
+   ( U306 C )
+   ( U286 Y )
+
+   + USE SIGNAL
+   ;
+ - n337
+   ( U446 A1 )
+   ( U441 B0 )
+   ( U440 Y )
+   ( U307 B0 )
+
+   + USE SIGNAL
+   ;
+ - n333
+   ( U445 B0 )
+   ( U444 Y )
+
+   + USE SIGNAL
+   ;
+ - n193
+   ( U445 Y )
+   ( i_tx_phy\/bit_cnt_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n335
+   ( U445 A0 )
+   ( U444 A )
+   ( U442 A )
+   ( U384 A1 )
+   ( U323 Y )
+   ( U308 B )
+   ( U247 A )
+
+   + USE SIGNAL
+   ;
+ - n334
+   ( U445 A2 )
+   ( U444 B )
+   ( U382 A1 )
+   ( U279 Y )
+   ( U270 B )
+   ( U268 A )
+
+   + USE SIGNAL
+   ;
+ - n331
+   ( U443 B0 )
+   ( U442 Y )
+
+   + USE SIGNAL
+   ;
+ - n194
+   ( U443 Y )
+   ( i_tx_phy\/bit_cnt_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n330
+   ( U443 B1 )
+   ( U371 C0 )
+   ( U289 Y )
+
+   + USE SIGNAL
+   ;
+ - n332
+   ( U443 A1 )
+   ( U383 B0 )
+   ( U382 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/bit_cnt[1]
+   ( U443 A0 )
+   ( U389 C )
+   ( U384 A2 )
+   ( U383 A1 )
+   ( U368 B0 )
+   ( U289 A )
+   ( i_tx_phy\/bit_cnt_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/bit_cnt[0]
+   ( U442 B )
+   ( U371 A0 )
+   ( U368 A0 )
+   ( U279 A )
+   ( i_tx_phy\/bit_cnt_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n195
+   ( U441 Y )
+   ( i_tx_phy\/tx_ip_sync_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/tx_ip_sync
+   ( U440 B )
+   ( U381 B )
+   ( U372 A )
+   ( U260 B )
+   ( i_tx_phy\/tx_ip_sync_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/append_eop
+   ( U439 B1 )
+   ( U428 B0 )
+   ( i_tx_phy\/append_eop_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/append_eop_sync1
+   ( U439 A1 )
+   ( U438 B1 )
+   ( i_tx_phy\/append_eop_sync1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n196
+   ( U439 Y )
+   ( i_tx_phy\/append_eop_sync1_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/append_eop_sync2
+   ( U438 A1 )
+   ( U283 A )
+   ( i_tx_phy\/append_eop_sync2_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n197
+   ( U438 Y )
+   ( i_tx_phy\/append_eop_sync2_reg D )
+
+   + USE SIGNAL
+   ;
+ - n198
+   ( U437 Y )
+   ( i_tx_phy\/append_eop_sync3_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/data_done
+   ( U469 A1 )
+   ( U373 B )
+   ( U271 A )
+   ( i_tx_phy\/data_done_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n358
+   ( U468 B0 )
+   ( U459 A )
+   ( U458 A )
+   ( U457 Y )
+   ( U253 AN )
+
+   + USE SIGNAL
+   ;
+ - n360
+   ( U468 Y )
+   ( U250 B )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/tx_ip
+   ( U468 A1 )
+   ( U292 A )
+   ( i_tx_phy\/tx_ip_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n359
+   ( U468 A0 )
+   ( U437 A1 )
+   ( U435 A0 )
+   ( U423 A2 )
+   ( U422 B0 )
+   ( U296 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[7]
+   ( U467 B0 )
+   ( i_tx_phy\/hold_reg_d_reg\[7\] D )
+   ( i_tx_phy\/hold_reg_reg\[7\] Q )
+
+   + USE SIGNAL
+   ;
+ - n357
+   ( U467 Y )
+   ( U253 B )
+
+   + USE SIGNAL
+   ;
+ - n356
+   ( U467 B1 )
+   ( U458 B )
+   ( U303 Y )
+
+   + USE SIGNAL
+   ;
+ - n241
+   ( U467 A1 )
+   ( U347 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/ld_data
+   ( U467 A0 )
+   ( U459 B )
+   ( U303 A )
+   ( i_tx_phy\/ld_data_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n354
+   ( U466 B0 )
+   ( U465 B0 )
+   ( U464 B0 )
+   ( U463 B0 )
+   ( U462 B0 )
+   ( U461 B0 )
+   ( U460 B0 )
+   ( U459 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[6]
+   ( U466 B1 )
+   ( i_tx_phy\/hold_reg_d_reg\[6\] D )
+   ( i_tx_phy\/hold_reg_reg\[6\] Q )
+
+   + USE SIGNAL
+   ;
+ - n355
+   ( U466 A0 )
+   ( U465 A0 )
+   ( U464 A0 )
+   ( U463 A0 )
+   ( U462 A0 )
+   ( U461 A0 )
+   ( U460 A0 )
+   ( U458 Y )
+
+   + USE SIGNAL
+   ;
+ - n180
+   ( U466 Y )
+   ( i_tx_phy\/hold_reg_reg\[6\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[5]
+   ( U465 B1 )
+   ( i_tx_phy\/hold_reg_d_reg\[5\] D )
+   ( i_tx_phy\/hold_reg_reg\[5\] Q )
+
+   + USE SIGNAL
+   ;
+ - n181
+   ( U465 Y )
+   ( i_tx_phy\/hold_reg_reg\[5\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[4]
+   ( U464 B1 )
+   ( i_tx_phy\/hold_reg_reg\[4\] Q )
+   ( i_tx_phy\/hold_reg_d_reg\[4\] D )
+
+   + USE SIGNAL
+   ;
+ - n182
+   ( U464 Y )
+   ( i_tx_phy\/hold_reg_reg\[4\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[3]
+   ( U463 B1 )
+   ( i_tx_phy\/hold_reg_reg\[3\] Q )
+   ( i_tx_phy\/hold_reg_d_reg\[3\] D )
+
+   + USE SIGNAL
+   ;
+ - n183
+   ( U463 Y )
+   ( i_tx_phy\/hold_reg_reg\[3\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[2]
+   ( U462 B1 )
+   ( i_tx_phy\/hold_reg_reg\[2\] Q )
+   ( i_tx_phy\/hold_reg_d_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - n184
+   ( U462 Y )
+   ( i_tx_phy\/hold_reg_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[1]
+   ( U461 B1 )
+   ( i_tx_phy\/hold_reg_reg\[1\] Q )
+   ( i_tx_phy\/hold_reg_d_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n185
+   ( U461 Y )
+   ( i_tx_phy\/hold_reg_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/hold_reg[0]
+   ( U460 B1 )
+   ( i_tx_phy\/hold_reg_reg\[0\] Q )
+   ( i_tx_phy\/hold_reg_d_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n186
+   ( U460 Y )
+   ( i_tx_phy\/hold_reg_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n353
+   ( U457 AN )
+   ( U427 A0 )
+   ( U426 A0 )
+   ( U423 B0 )
+   ( U313 C )
+   ( U302 Y )
+
+   + USE SIGNAL
+   ;
+ - n352
+   ( U457 C )
+   ( U422 A1 )
+   ( U421 Y )
+
+   + USE SIGNAL
+   ;
+ - n348
+   ( U456 B0 )
+   ( U455 Y )
+
+   + USE SIGNAL
+   ;
+ - n350
+   ( U456 A1 )
+   ( U451 Y )
+   ( U317 C )
+
+   + USE SIGNAL
+   ;
+ - n187
+   ( U456 Y )
+   ( i_tx_phy\/state_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - n351
+   ( U456 A0 )
+   ( U425 Y )
+   ( U324 B0 )
+
+   + USE SIGNAL
+   ;
+ - n381
+   ( U484 B1 )
+   ( U483 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/bit_cnt[1]
+   ( U483 A0 )
+   ( U480 A0 )
+   ( U390 A0 )
+   ( U293 A )
+   ( i_rx_phy\/bit_cnt_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/bit_cnt[0]
+   ( U483 A2 )
+   ( U322 C )
+   ( U281 A )
+   ( i_rx_phy\/bit_cnt_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n386
+   ( U483 B0 )
+   ( U480 B1 )
+   ( U321 A )
+   ( U293 Y )
+
+   + USE SIGNAL
+   ;
+ - n169
+   ( U481 Y )
+   ( i_rx_phy\/bit_cnt_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n385
+   ( U481 A1 )
+   ( U479 A1 )
+   ( U321 B )
+   ( U281 Y )
+
+   + USE SIGNAL
+   ;
+ - n379
+   ( U480 B0 )
+   ( U322 Y )
+
+   + USE SIGNAL
+   ;
+ - n170
+   ( U480 Y )
+   ( i_rx_phy\/bit_cnt_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/shift_en
+   ( U479 C0 )
+   ( U355 B )
+   ( U272 A )
+   ( i_rx_phy\/shift_en_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n377
+   ( U478 B0N )
+   ( U478 A1 )
+   ( U357 A1 )
+   ( U316 A1 )
+   ( U290 Y )
+
+   + USE SIGNAL
+   ;
+ - n376
+   ( U478 B1N )
+   ( U357 B0 )
+   ( U356 Y )
+
+   + USE SIGNAL
+   ;
+ - n172
+   ( U478 Y )
+   ( i_rx_phy\/one_cnt_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - n378
+   ( U478 A0 )
+   ( U354 Y )
+   ( U316 A2 )
+
+   + USE SIGNAL
+   ;
+ - n374
+   ( U477 B0 )
+   ( U356 A1 )
+   ( U241 Y )
+
+   + USE SIGNAL
+   ;
+ - n173
+   ( U477 Y )
+   ( i_rx_phy\/one_cnt_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - n373
+   ( U477 B1 )
+   ( U282 Y )
+   ( U266 C )
+
+   + USE SIGNAL
+   ;
+ - n375
+   ( U477 A1 )
+   ( U356 B0 )
+   ( U355 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/one_cnt[0]
+   ( U477 A0 )
+   ( U356 A0 )
+   ( U354 A )
+   ( U282 A )
+   ( i_rx_phy\/one_cnt_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - n372
+   ( U13 A )
+   ( U476 A0 )
+   ( U441 A0 )
+   ( U437 B0 )
+   ( U435 A1 )
+   ( U433 A0 )
+   ( U432 A2 )
+   ( U409 BN )
+   ( U312 Y )
+
+   + USE SIGNAL
+   ;
+ - n371
+   ( U476 A1 )
+   ( U474 Y )
+
+   + USE SIGNAL
+   ;
+ - n174
+   ( U476 Y )
+   ( i_rx_phy\/sd_nrzi_reg D )
+
+   + USE SIGNAL
+   ;
+ - n370
+   ( U476 B0 )
+   ( U475 Y )
+
+   + USE SIGNAL
+   ;
+ - n368
+   ( U324 A1 )
+   ( U257 Y )
+   ( U14 A )
+   ( U475 B0 )
+   ( U470 A0 )
+   ( U440 A )
+   ( U439 A0 )
+   ( U438 A0 )
+   ( U433 B0N )
+   ( U365 B0N )
+   ( U355 A )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/sd_nrzi
+   ( U475 B1 )
+   ( U319 B )
+   ( U305 B )
+   ( i_rx_phy\/sd_nrzi_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n369
+   ( U475 A1 )
+   ( U420 A0 )
+   ( U399 B0 )
+   ( U377 D )
+   ( U280 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/sd_r
+   ( U474 A1 )
+   ( U297 A )
+   ( i_rx_phy\/sd_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rxd_s
+   ( U474 A0 )
+   ( U398 A )
+   ( U394 A0 )
+   ( U393 A0 )
+   ( U295 A )
+   ( i_rx_phy\/rxd_r_reg D )
+   ( i_rx_phy\/rxd_s_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n367
+   ( U473 A0 )
+   ( U472 A0 )
+   ( U471 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/sd_nrzi_o
+   ( U473 A1 )
+   ( U472 A1 )
+   ( U298 A )
+   ( i_tx_phy\/sd_nrzi_o_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n175
+   ( U473 Y )
+   ( i_tx_phy\/sd_nrzi_o_reg D )
+
+   + USE SIGNAL
+   ;
+ - n366
+   ( U473 B0 )
+   ( U472 Y )
+
+   + USE SIGNAL
+   ;
+ - n365
+   ( U472 B0 )
+   ( U434 A1 )
+   ( U433 A1 )
+   ( U284 Y )
+
+   + USE SIGNAL
+   ;
+ - n364
+   ( U472 C0 )
+   ( U445 A1 )
+   ( U382 B0N )
+   ( U381 Y )
+
+   + USE SIGNAL
+   ;
+ - i_tx_phy\/sd_bs_o
+   ( U471 A )
+   ( U470 A1 )
+   ( i_tx_phy\/sd_bs_o_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n363
+   ( U471 B )
+   ( U434 B0 )
+   ( U323 A )
+   ( U260 Y )
+
+   + USE SIGNAL
+   ;
+ - n176
+   ( U470 Y )
+   ( i_tx_phy\/sd_bs_o_reg D )
+
+   + USE SIGNAL
+   ;
+ - n362
+   ( U470 B0N )
+   ( U446 B0 )
+   ( U308 Y )
+   ( U307 A1 )
+   ( U243 A )
+
+   + USE SIGNAL
+   ;
+ - n177
+   ( U469 Y )
+   ( i_tx_phy\/data_done_reg D )
+
+   + USE SIGNAL
+   ;
+ - n361
+   ( U469 A0 )
+   ( U441 A1 )
+   ( U292 Y )
+
+   + USE SIGNAL
+   ;
+ - n396
+   ( U482 B )
+   ( U322 B )
+   ( U305 A )
+   ( U255 Y )
+   ( U15 A )
+   ( U497 B1 )
+   ( U496 B1 )
+   ( U495 B1 )
+   ( U494 B1 )
+   ( U493 B1 )
+   ( U492 B1 )
+   ( U491 B1 )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[1]
+   ( PIN DataIn_o[1] )
+   ( U497 A1 )
+   ( U496 B0 )
+   ( i_rx_phy\/hold_reg_reg\[1\] Q )
+
+   + USE SIGNAL
+   ;
+ - n156
+   ( U497 Y )
+   ( i_rx_phy\/hold_reg_reg\[0\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[0]
+   ( PIN DataIn_o[0] )
+   ( U497 B0 )
+   ( i_rx_phy\/hold_reg_reg\[0\] Q )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[2]
+   ( PIN DataIn_o[2] )
+   ( U496 A1 )
+   ( U495 B0 )
+   ( i_rx_phy\/hold_reg_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n157
+   ( U496 Y )
+   ( i_rx_phy\/hold_reg_reg\[1\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[3]
+   ( PIN DataIn_o[3] )
+   ( U495 A1 )
+   ( U494 B0 )
+   ( i_rx_phy\/hold_reg_reg\[3\] Q )
+
+   + USE SIGNAL
+   ;
+ - n158
+   ( U495 Y )
+   ( i_rx_phy\/hold_reg_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[4]
+   ( PIN DataIn_o[4] )
+   ( U494 A1 )
+   ( U493 B0 )
+   ( i_rx_phy\/hold_reg_reg\[4\] Q )
+
+   + USE SIGNAL
+   ;
+ - n159
+   ( U494 Y )
+   ( i_rx_phy\/hold_reg_reg\[3\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[5]
+   ( PIN DataIn_o[5] )
+   ( U493 A1 )
+   ( U492 B0 )
+   ( i_rx_phy\/hold_reg_reg\[5\] Q )
+
+   + USE SIGNAL
+   ;
+ - n160
+   ( U493 Y )
+   ( i_rx_phy\/hold_reg_reg\[4\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[6]
+   ( PIN DataIn_o[6] )
+   ( U492 A1 )
+   ( U491 B0 )
+   ( i_rx_phy\/hold_reg_reg\[6\] Q )
+
+   + USE SIGNAL
+   ;
+ - n161
+   ( U492 Y )
+   ( i_rx_phy\/hold_reg_reg\[5\] D )
+
+   + USE SIGNAL
+   ;
+ - DataIn_o[7]
+   ( PIN DataIn_o[7] )
+   ( U491 A1 )
+   ( U490 A1 )
+   ( i_rx_phy\/hold_reg_reg\[7\] Q )
+
+   + USE SIGNAL
+   ;
+ - n162
+   ( U491 Y )
+   ( i_rx_phy\/hold_reg_reg\[6\] D )
+
+   + USE SIGNAL
+   ;
+ - n163
+   ( U490 Y )
+   ( i_rx_phy\/hold_reg_reg\[7\] D )
+
+   + USE SIGNAL
+   ;
+ - n395
+   ( U490 B0N )
+   ( U305 Y )
+   ( U238 B )
+
+   + USE SIGNAL
+   ;
+ - fs_ce
+   ( U257 A )
+   ( i_rx_phy\/fs_ce_reg Q )
+   ( U12 A )
+   ( U488 B1 )
+   ( U487 A0 )
+   ( U420 A1 )
+   ( U377 C )
+   ( U353 A )
+   ( U319 A )
+   ( U312 B )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/se0
+   ( U488 A1 )
+   ( U399 A0 )
+   ( U390 C0 )
+   ( U377 BN )
+   ( U318 A )
+   ( U285 Y )
+   ( i_rx_phy\/se0_r_reg D )
+
+   + USE SIGNAL
+   ;
+ - n164
+   ( U488 Y )
+   ( i_rx_phy\/se0_s_reg D )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/se0_s
+   ( U488 B0 )
+   ( U377 AN )
+   ( i_rx_phy\/se0_s_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n392
+   ( U487 B0 )
+   ( U474 B0 )
+   ( U297 Y )
+
+   + USE SIGNAL
+   ;
+ - n165
+   ( U487 Y )
+   ( i_rx_phy\/sd_r_reg D )
+
+   + USE SIGNAL
+   ;
+ - n393
+   ( U487 A1 )
+   ( U474 B1 )
+   ( U295 Y )
+
+   + USE SIGNAL
+   ;
+ - RxValid_o
+   ( PIN RxValid_o )
+   ( U486 B0 )
+   ( i_rx_phy\/rx_valid_reg Q )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rx_valid_r
+   ( U486 A0 )
+   ( U399 A1 )
+   ( i_rx_phy\/rx_valid_r_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n166
+   ( U486 Y )
+   ( i_rx_phy\/rx_valid_r_reg D )
+
+   + USE SIGNAL
+   ;
+ - n389
+   ( U485 A1 )
+   ( U359 B )
+   ( U256 Y )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/bit_cnt[2]
+   ( U485 A0 )
+   ( U483 B1 )
+   ( U390 A1 )
+   ( U294 A )
+   ( i_rx_phy\/bit_cnt_reg\[2\] Q )
+
+   + USE SIGNAL
+   ;
+ - n388
+   ( U485 A2 )
+   ( U321 Y )
+
+   + USE SIGNAL
+   ;
+ - n390
+   ( U485 Y )
+   ( U246 B )
+
+   + USE SIGNAL
+   ;
+ - i_rx_phy\/rx_valid1
+   ( U485 B0 )
+   ( U359 A )
+   ( i_rx_phy\/rx_valid1_reg Q )
+
+   + USE SIGNAL
+   ;
+ - n387
+   ( U485 B1 )
+   ( U481 A0 )
+   ( U479 A0 )
+   ( U353 Y )
+   ( U256 A )
+   ( U255 A )
+
+   + USE SIGNAL
+   ;
+ - n382
+   ( U484 B0 )
+   ( U482 Y )
+
+   + USE SIGNAL
+   ;
+ - n168
+   ( U484 Y )
+   ( i_rx_phy\/bit_cnt_reg\[2\] D )
+
+   + USE SIGNAL
+   ;
+ - n384
+   ( U484 A0 )
+   ( U481 B0 )
+   ( U480 A1 )
+   ( U479 Y )
+
+   + USE SIGNAL
+   ;
+ - n383
+   ( U484 A1 )
+   ( U483 A1 )
+   ( U294 Y )
+
+   + USE SIGNAL
+   ;
+END NETS
+END DESIGN

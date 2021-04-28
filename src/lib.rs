@@ -1,15 +1,18 @@
 #![allow(dead_code)]
-use std::rc::Weak;
-use std::cell::RefCell;
-use std::rc::Rc;
-use cts_plugin::{CTSPluginRes, DesignPlugin, PdkPlugin};
-use std::collections::{HashMap, HashSet};
 
+use cts_plugin::{CTSPluginRes, DesignPlugin, PdkPlugin};
 use libloading::Library;
 use rand::Rng;
+use serde_json::Value;
+use std::cell::RefCell;
+use std::collections::{HashMap, HashSet};
+use std::f32::consts::PI;
+use std::rc::Rc;
 
 mod merge;
+mod node;
 use merge::MergeUnit;
+use node::TreeNode;
 
 enum MyError {
     IOErr,
@@ -27,6 +30,7 @@ pub struct ClockTree {
     sinks: Vec<Sink>,
     buffers: Vec<Buffer>,
     merge: Vec<MergeUnit>,
+    root: Option<RefCell<Rc<TreeNode>>>,
 }
 
 impl ClockTree {
@@ -54,8 +58,6 @@ impl ClockTree {
         let cts_lib = Library::new("/tmp/libvulcan.so").expect("load library");
         let new_design_plugin: libloading::Symbol<fn() -> Box<dyn DesignPlugin>> =
             unsafe { cts_lib.get(b"new_design_plugin") }.expect("load symbol");
-        let adjust_pin_location: libloading::Symbol<fn(i32, i32, i8) -> (i32, i32)> =
-            unsafe { cts_lib.get(b"adjust_pin_location") }.expect("load symbol");
         println!("Load vulcan so successfully");
         let mut my_design = new_design_plugin();
         // step 1 : prepare via map and layer map before import def
@@ -73,14 +75,14 @@ impl ClockTree {
             sink_type.insert(x.0.to_string());
         });
 
-        let mut sink_offset: HashMap<String, (f32, f32)> = HashMap::new();
+        let mut sink_offset: HashMap<String, HashMap<i8, (f32, f32)>> = HashMap::new();
         let mut sink_cap: HashMap<String, f32> = HashMap::new();
         let dbu_factor = my_design.get_length_dbu()?;
         println!("Get dbu successfully");
         let dbu_factor = dbu_factor as f32;
         for d in &sink_type {
             println!("cell {}", d);
-            let offset = my_pdk.get_sink_clk_pin_offset(d)?;
+            let offset: HashMap<i8, (f32, f32)> = my_pdk.get_sink_clk_pin_offset(d)?;
             println!("get offset {:?}", offset);
             let cap = my_pdk.get_sink_cap(d)?;
             println!("get cap {}", cap);
@@ -94,15 +96,17 @@ impl ClockTree {
             .map(|x| {
                 let orient = x.2;
                 let (origin_x, origin_y) = x.1;
-                let (offset_x, offset_y) = *sink_offset.get(&x.0).unwrap();
+                let (offset_x, offset_y) =
+                    *sink_offset.get(&x.0).and_then(|x| x.get(&orient)).unwrap();
                 let offset_dbu = (
                     (dbu_factor * offset_x) as i32,
                     (dbu_factor * offset_y) as i32,
                 );
-                let adjust_offset_dbu = adjust_pin_location(offset_dbu.0, offset_dbu.1, orient);
-                let load_cap = *sink_cap.get(&x.0).unwrap();
-                let sink_x = origin_x + adjust_offset_dbu.0;
-                let sink_y = origin_y + adjust_offset_dbu.1;
+                // let load_cap = *sink_cap.get(&x.0).unwrap();
+                let sink_x = origin_x + offset_dbu.0;
+                let sink_y = origin_y + offset_dbu.1;
+                // let sink_x = origin_x;
+                // let sink_y = origin_y;
                 if sink_x < x_min {
                     x_min = sink_x;
                 }
@@ -119,23 +123,120 @@ impl ClockTree {
                     name: x.0.to_string(),
                     x: sink_x,
                     y: sink_y,
-                    load_cap,
+                    load_cap: 0.0,
                 }
             })
             .collect();
         self.x_range = (x_min, x_max);
         self.y_range = (y_min, y_max);
+        println!("x_range:{:?}", self.x_range);
+        println!("y_range:{:?}", self.y_range);
         println!("Load CTS related data successfully");
         // generate topology
-        self.gen_topology();
+        let level2length: HashMap<u8, u32> = self.gen_topology();
 
+        // prepare buffer related data
+        let buffers: HashMap<String, Value> = HashMap::new();
+        let buffer_names: Vec<String> = my_pdk.list_all_clock_buffer()?;
+        let clock_buffer_names: Vec<String> = buffer_names
+            .iter()
+            .filter(|x| x.contains("BUFH"))
+            .map(|x| x.to_string())
+            .collect();
+        println!("{:?}", clock_buffer_names);
+        println!("Totally got {} from pdk", clock_buffer_names.len());
+
+        // for d in &clock_buffer_names {
+        //     let a_buffer = my_pdk.get_buffer(&d)?;
+        //     buffers.insert(d.to_string(),a_buffer);
+        // }
         // my_design.
+        self.buffering(&level2length, &buffers);
 
+        // edit design. Including add buffer and all clock path into design
+
+        // add buffer
+        for d in &self.buffers {
+            // always orient N buffer
+            my_design.add_clock_buffer(&d.model_name, d.location, 0)?;
+        }
+
+        // add net
+        let mut clock_net: Vec<cts_plugin::Route> = Vec::new();
+        // let clk_pin = my_design.get_clk_pin(&self.name)?;
+        let mut root = (0, 0);
+        let clk_pin = (25235,28910);
+        for d in &self.merge {
+            for p in &d.path {
+                let mut element: Vec<cts_plugin::Element> = Vec::new();
+                if !p.if_turn() {
+                    let p = cts_plugin::Path {
+                        from: p.from,
+                        to: p.to,
+                    };
+                    // println!("x=[{},{}]",&p.from.0,&p.to.0);
+                    // println!("y=[{},{}]",&p.from.1,&p.to.1);
+                    // println!("plt.plot(x,y)");
+                    element.push(cts_plugin::Element::Path(p));
+                } else {
+                    let turn_point = p.turn.unwrap();
+                    let p1 = cts_plugin::Path {
+                        from: p.from,
+                        to: turn_point,
+                    };
+                    let p2 = cts_plugin::Path {
+                        from: turn_point,
+                        to: p.to,
+                    };
+                    // println!("x=[{},{},{}]",p.from.0,turn_point.0,p.to.0);
+                    // println!("y=[{},{},{}]",p.from.1,turn_point.1,p.to.1);
+                    // println!("plt.plot(x,y)");
+                    element.push(cts_plugin::Element::Path(p1));
+                    element.push(cts_plugin::Element::Path(p2));
+                }
+                clock_net.push(cts_plugin::Route {
+                    layer: "M6",
+                    element: element,
+                });
+                if d.is_root() {
+                    root = d.root;
+                }
+            }
+        }
+        let mut element: Vec<cts_plugin::Element> = Vec::new();
+        let turn_point_x = ((root.0 + clk_pin.0) / 2) as i32;
+        let p1 = cts_plugin::Path {
+            from: root,
+            to: (turn_point_x, root.1),
+        };
+        let p2 = cts_plugin::Path {
+            from: (turn_point_x, root.1),
+            to: (turn_point_x, clk_pin.1),
+        };
+        let p3 = cts_plugin::Path {
+            from: (turn_point_x, clk_pin.1),
+            to: clk_pin,
+        };
+        // println!("x=[{},{},{},{}]",root.0,turn_point_x,turn_point_x,clk_pin.0);
+        // println!("y=[{},{},{},{}]",root.1,root.1,clk_pin.1,clk_pin.1);
+        // println!("plt.plot(x,y)");
+        element.push(cts_plugin::Element::Path(p1));
+        element.push(cts_plugin::Element::Path(p2));
+        element.push(cts_plugin::Element::Path(p3));
+        clock_net.push(cts_plugin::Route {
+            layer: "M6",
+            element: element,
+        });
+        my_design.add_clock_net(&self.name, &clock_net)?;
         // export def
-
+        my_design.export_def("exported.def")?;
         Ok(())
     }
-    fn gen_topology(&mut self) {
+
+    // gen_topology generate a full un-buffered symmetric clock tree that represent by sets of MergeUnit
+    //
+    // return:HashMap<tree_level,target_length>
+    fn gen_topology(&mut self) -> HashMap<u8, u32> {
         println!("Start generate topology");
         // step 1: bnp and insert pseudo sink
         let mut branchs = vec![];
@@ -149,8 +250,10 @@ impl ClockTree {
                 }
             }
         }
+        branchs = vec![2,2,2,3,3,13];
         println!("branch number planning finished,result:{:?}", branchs);
-        // add pseudo sinks with zero capload
+        let max_level = branchs.len() as u8; // not larger than 128
+                                             // add pseudo sinks with zero capload
         let target_num = branchs.iter().fold(1, |acc, x| acc * x);
         let pseudo_sink = target_num - self.sinks.len() as u32;
         println!("need {} pseudo sink into real sink topo", pseudo_sink);
@@ -164,20 +267,28 @@ impl ClockTree {
                 })
             }
         }
-        // step 2 : top-down parition
+        // STEP 2 : top-down parition
         let coords: Vec<(i32, i32)> = self.sinks.iter().map(|s| (s.x, s.y)).collect();
-
         // group label and sink indexing pair. group label can be used later with branchs to fully
         // specify symmetry clock tree topology
         // As a result, the grp label is in increased-order
+        // (u32,usize) = (grp_label,sink_index)
         let grp2id: Vec<(u32, usize)> = group(&coords, &branchs);
 
-        // step 3: bottom-up merge
+        // STEP 3: bottom-up merge
 
         // reverse branchs to bottom-up order
         // hashmap to store map between merge level and target wirelength
-        let mut branch2length: HashMap<u8, u32> = HashMap::new();
         branchs.reverse();
+
+        // to store child node generated in each level
+        let mut nodes: Vec<Rc<TreeNode>> = Vec::new();
+
+        // prepare most bottom node in the tree(Sinks)
+        for (_, d) in &grp2id {
+            nodes.push(Rc::new(TreeNode::new_sink_node(*d)));
+        }
+
         let mut childs: Vec<(i32, i32)> = grp2id
             .iter()
             .map(|d| {
@@ -185,48 +296,108 @@ impl ClockTree {
                 (s.x, s.y)
             })
             .collect();
+
+        let mut level2length: HashMap<u8, u32> = HashMap::new();
+        // store roots location of nodes in same level when merging
         let mut new_childs: Vec<(i32, i32)> = Vec::new();
-        for (level, b) in branchs.iter().enumerate() {
-            let level = level as u8;
+        // store roots TreeNode of nodes in same level when merging
+        let mut new_child_nodes: Vec<Rc<TreeNode>> = Vec::new();
+        println!("{:?}", branchs);
+        for (i, b) in branchs.iter().enumerate() {
+            let level = max_level - i as u8;
             let mut target_len = u32::MIN;
-            let mut one_merge_childs = Vec::new();
-            for (i, s) in childs.iter().enumerate() {
-                let i = i as u32;
-                if i % *b == 0 && i != 0 {
+            let mut one_merge_childs: Vec<(i32, i32)> = Vec::new();
+            let mut child_nodes: Vec<Rc<TreeNode>> = Vec::new();
+            for (j, s) in childs.iter().enumerate() {
+                let n = j as u32;
+                one_merge_childs.push(*s);
+                child_nodes.push(nodes[j].clone());
+                // if n % b == 0 && n != 0, it means one_merge_childs is not empty and same group childs are all collected in the one_merge_childs.
+                // one_merge_childs is ready to be load into one_merge_inst
+                if (n + 1) % *b == 0 {
+                    // (1) update MergeUnit
                     let mut one_merge_inst = MergeUnit::new();
                     one_merge_inst.load_sink(&one_merge_childs);
-                    // compare between target length
-                    if one_merge_inst.range_length() > target_len {
-                        target_len = one_merge_inst.range_length();
-                    }
                     one_merge_inst.set_level(level);
+                    // get target length in current tree level by comparing bewteen same level of MergeUnit
+                    if one_merge_inst.common_length() > target_len {
+                        target_len = one_merge_inst.common_length();
+                    }
+
+                    // update roots, which is used in next iteration as childs
                     new_childs.push(one_merge_inst.root.clone());
+
                     self.merge.push(one_merge_inst);
+
+                    // (2) update TreeNode
+                    // current MergeUnit index
+                    let current_merge_idx = self.merge.len();
+                    let mut a_node = TreeNode::new_dot_node(current_merge_idx);
+                    a_node.level = level;
+                    let node = Rc::new(a_node);
+                    *node.child.borrow_mut() = child_nodes.clone();
+                    // update root nodes, which is used in next iteration as child nodes
+                    new_child_nodes.push(node);
+
                     // reset next iter childs
                     one_merge_childs.clear();
+                    // reset child nodes
+                    child_nodes.clear();
                 }
-                one_merge_childs.push(*s);
             }
-            branch2length.insert(level, target_len);
-            childs.clear();
+            level2length.insert(level, target_len);
+            // childs.clear();
+            // nodes.clear();
+
+            // iterate MergeUnit and TreeNode
             childs = new_childs.clone();
+            nodes = new_child_nodes.clone();
+            new_childs.clear();
+            new_child_nodes.clear();
         }
-        println!("{:?}", branch2length);
+        println!("MergeUnit {}", self.merge.len());
+        println!("{:?}", level2length);
         for m in self.merge.iter_mut() {
-            let level = m.level;
-            let target_len = *branch2length.get(&level).unwrap();
-            // mannually precision
-            if (target_len - m.range_length()) > 100 {
-                // need adjust merge range
-                m.adjust_range(target_len);
-                m.merge();
-            }
+            // let level = m.level;
+            // let target_len = *level2length.get(&level).unwrap();
+            // let margin = target_len - m.common_length();
+            // if margin > 200 {
+            //     m.adjust_root(margin);
+            // }
+            m.merge();
         }
         let total_estimate_wire = self.merge.iter().fold(0, |acc, x| acc + x.length());
         println!(
             "pre-merge finished, estimated wirelength:{}",
             total_estimate_wire
         );
+        if nodes.len() == 1 {
+            let root = nodes[0].clone();
+            self.root = Some(RefCell::new(root));
+            println!("Successfully create tree root");
+        } else {
+            println!("Node failed, there {} nodes", nodes.len());
+        }
+        level2length
+    }
+
+    // buffering select buffer size combination (insertion solution) into candidate insertion points on un-buffered symmetric clock tree.
+    // This function regards level2length as the topology structure when optimization, for simplity
+    fn buffering(&mut self, _topo: &HashMap<u8, u32>, _buffers: &HashMap<String, Value>) {
+        let mut buf_count = 0;
+        if let Some(root) = &self.root {
+            // insert max buffer at root
+            let root_idx: usize = root.borrow().get_dot_node_data().unwrap();
+            let root_location = self.merge[root_idx - 1].root;
+            let buffer = Buffer {
+                buffer_name: format!("{}_{}", "BUFH_X16M_A9TL40", buf_count),
+                model_name: String::from("BUFH_X16M_A9TL40"),
+                location: root_location,
+            };
+            self.buffers.push(buffer);
+            buf_count += 1;
+        }
+        println!("Total {} buffer inserted", buf_count);
     }
 }
 
@@ -238,92 +409,105 @@ pub struct Sink {
     load_cap: f32,
 }
 
-// reference https://joshondesign.com/2020/04/08/rust5_tree
-pub struct TreeNode {
-    pub child: RefCell<Vec<Rc<TreeNode>>>,
-    parent: Option<Rc<Weak<TreeNode>>>,
-    // Three types can be hold in node_data: Clock buffer(ViComponent), Sink(ViComponent),Tappoint(coord)
-    node_data: NodeData,
-}
-
-pub enum NodeData {
-    Sink(Box<Sink>),
-    Buffer(Box<Buffer>),
-    Dot((i32,i32)),
-}
-
 pub struct Buffer {
-    buffer_name: String,
-    model_name: String,
-    in_pin: BufInPin,
-    out_pin: BufOutPin,
+    pub buffer_name: String,
+    pub model_name: String,
+    pub location: (i32, i32),
+    // in_pin: BufInPin,
+    // out_pin: BufOutPin,
 }
 
-pub struct BufInPin {
-    name: String,
-    location: (i32, i32),
-    cap: f32,
-}
+// pub struct BufInPin {
+//     name: String,
+//     location: (i32, i32),
+//     cap: f32,
+// }
 
-pub struct BufOutPin {
-    name: String,
-    location: (i32, i32),
-}
+// pub struct BufOutPin {
+//     name: String,
+//     location: (i32, i32),
+// }
 
-// get geometry center
+// fn buffering() -> HashMap<()> {}
+
+// fn get_center(coords: &[(i32, i32)]) -> (i32, i32) {
+//     let mut top_most = (0,0);
+//     let mut bott_most = (0,0);
+//     let mut left_most = (0,0);
+//     let mut right_most = (0,0);
+//     let (mut min_x,mut max_x,mut min_y,mut max_y) = (i32::MAX,i32::MIN,i32::MAX,i32::MIN);
+//     for d in coords {
+//         if d.0 < min_x {
+//             min_x = d.0;
+//             left_most = *d;
+//         }
+//         if d.0 > max_x {
+//             max_x = d.0;
+//             right_most = *d;
+//         }
+//         if d.1 < min_y {
+//             min_y = d.1;
+//             bott_most = *d;
+//         }
+//         if d.1 > max_y {
+//             max_y = d.1;
+//             top_most = *d;
+//         }
+//     }
+//     (((top_most.0 + bott_most.0)/2) as i32, ((left_most.1 + right_most.1)/2) as i32)
+// }
+
 fn get_center(coords: &[(i32, i32)]) -> (i32, i32) {
-    let mut sum_x: i64 = 0;
-    let mut sum_y: i64 = 0;
-    let mut n: i64 = 0;
-    coords.iter().for_each(|x| {
+    let mut n = 0;
+    let mut x: i64 = 0;
+    let mut y: i64 = 0;
+    for d in coords {
         n += 1;
-        sum_x += x.0 as i64;
-        sum_y += x.1 as i64
-    });
-    let center_x = (sum_x / n) as i32;
-    let center_y = (sum_y / n) as i32;
-    (center_x, center_y)
+        x += d.0 as i64;
+        y += d.1 as i64;
+    }
+    ((x / n) as i32, (y / n) as i32)
 }
 
-// to simplify get max distance between two farest point, just use perimeter to represent max
-// distance
-fn get_max_distance(coords: &[(i32, i32)]) -> u32 {
-    let (mut x_min,mut x_max,mut y_min,mut y_max) = (i32::MAX,i32::MIN,i32::MAX,i32::MIN);
+fn get_cost_value(coords: &[(i32, i32)]) -> u32 {
+    let mut top_most = (0, 0);
+    let mut bott_most = (0, 0);
+    let mut left_most = (0, 0);
+    let mut right_most = (0, 0);
+    let (mut min_x, mut max_x, mut min_y, mut max_y) = (i32::MAX, i32::MIN, i32::MAX, i32::MIN);
     for d in coords {
-        if d.0 < x_min {
-            x_min = d.0;
+        if d.0 < min_x {
+            min_x = d.0;
+            left_most = *d;
         }
-        if d.0 > x_max {
-            x_max = d.0;
+        if d.0 > max_x {
+            max_x = d.0;
+            right_most = *d;
         }
-        if d.1 < y_min {
-            y_min = d.1;
+        if d.1 < min_y {
+            min_y = d.1;
+            bott_most = *d;
         }
-        if d.1 > y_max {
-            y_max = d.1;
+        if d.1 > max_y {
+            max_y = d.1;
+            top_most = *d;
         }
     }
-    ((x_max - x_min) + (y_max - y_min)) as u32
-    // let mut dis = 0;
-    // let len = coords.len();
-    // for i in 0..len - 1 {
-    //     dis += (coords[i].0 - coords[i].1).abs() + (coords[i + 1].1 - coords[i + 1].1).abs();
-    // }
-    // dis += (coords[len - 1].0 - coords[0].0).abs() + (coords[len - 1].1 - coords[0].1).abs();
-    // dis as u32
+    (top_most.1 - bott_most.1).abs() as u32 + (left_most.0 - right_most.0).abs() as u32
 }
 
 fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
     let mut result = Vec::new();
     let mut grps = Vec::new();
+    let center = get_center(coords);
     for (i, b) in branchs.iter().enumerate() {
         if i == 0 {
             let idxs = (0..coords.len()).collect();
-            grps = find_group(coords, (0, idxs), *b);
+            grps = find_group(coords, center, (0, idxs), *b);
         } else if i < branchs.len() - 1 {
             let mut new_d = Vec::new();
             for d in &grps {
-                let next_grps = find_group(coords, d.clone(), *b);
+                let next_grps = find_group(coords, center, d.clone(), *b);
 
                 for g in next_grps {
                     new_d.push(g);
@@ -332,7 +516,7 @@ fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
             grps = new_d;
         } else {
             for d in &grps {
-                let next_grps = find_group(coords, d.clone(), *b);
+                let next_grps = find_group(coords, center, d.clone(), *b);
                 for v in next_grps {
                     // Vec<(u32,Vec<usize>)> become Vec<(u32,vec![usize])>
                     result.push((v.0, v.1[0]));
@@ -345,6 +529,7 @@ fn group(coords: &[(i32, i32)], branchs: &Vec<u32>) -> Vec<(u32, usize)> {
 
 fn find_group(
     coords: &[(i32, i32)],
+    center: (i32, i32),
     grp2id: (u32, Vec<usize>),
     grpn_next: u32,
 ) -> Vec<(u32, Vec<usize>)> {
@@ -354,13 +539,17 @@ fn find_group(
         grp_id_next.push(start_gid_next + i);
     }
     let locations: Vec<(i32, i32)> = grp2id.1.iter().map(|x| coords[*x]).collect();
-    let center = get_center(&locations);
     let relative_location_phase: Vec<i32> = locations
         .iter()
         .map(|d| {
             let x = (d.0 - center.0) as f32;
             let y = (d.1 - center.1) as f32;
-            (y.atan2(x) * 10000.0) as i32
+            let phase: f32 = if y > 0.0 {
+                y.atan2(x)
+            } else {
+                y.atan2(x) + 2.0 * PI
+            };
+            (phase * 10000.0) as i32
         })
         .collect();
     let mut pre_sort_data: Vec<(&usize, &i32)> = grp2id
@@ -371,48 +560,13 @@ fn find_group(
     pre_sort_data.sort_by(|a, b| a.1.cmp(&b.1));
     let sorted_idx: Vec<usize> = pre_sort_data.iter().map(|x| x.0.clone()).collect();
     let cut_step = sorted_idx.len() as u32 / grpn_next;
-    let mut min_dis = u32::MAX;
-    let mut min_dis_cut = 0;
-    // find min_dis_cut that achieve minimal parition cost
-    for start_cut in 0..cut_step {
-        let mut max_dis = 0;
-        for i in 0..grpn_next {
-            let mut idxs: Vec<usize> = Vec::new();
-            if i == grpn_next - 1 {
-                let start: usize = (i * cut_step + start_cut) as usize;
-                idxs.extend_from_slice(&sorted_idx[start..]);
-                let end: usize = cut_step as usize;
-                idxs.extend_from_slice(&sorted_idx[..end]);
-            } else {
-                let start = (i * cut_step + start_cut) as usize;
-                let end = ((i + 1) * cut_step + start_cut) as usize;
-                idxs.extend_from_slice(&sorted_idx[start..end]);
-            };
-            let locs: Vec<(i32, i32)> = idxs.iter().map(|x| coords[*x]).collect();
-            let dis = get_max_distance(&locs);
-            if dis > max_dis {
-                max_dis = dis;
-            }
-        }
-        if max_dis < min_dis {
-            min_dis_cut = start_cut;
-            min_dis = max_dis;
-        }
-    }
     let mut result = Vec::new();
     for (i, gid) in grp_id_next.iter().enumerate() {
         let i = i as u32;
-        let mut idxs: Vec<usize> = Vec::new();
-        if i == grpn_next - 1 {
-            let start = (i * cut_step + min_dis_cut) as usize;
-            idxs.extend_from_slice(&sorted_idx[start..]);
-            let end = (cut_step) as usize;
-            idxs.extend_from_slice(&sorted_idx[0..end]);
-        } else {
-            let start = (i * cut_step + min_dis_cut) as usize;
-            let end = ((i + 1) * cut_step + min_dis_cut) as usize;
-            idxs.extend_from_slice(&sorted_idx[start..end]);
-        };
+        let start = (cut_step * i) as usize;
+        let end = (cut_step * (i + 1)) as usize;
+        let idxs: Vec<usize> = (&sorted_idx[start..end]).to_vec();
+
         result.push((*gid, idxs))
     }
     result

@@ -3,46 +3,34 @@
 // to each child node
 // Note: there is no limit on number of given points, that is , it support 
 // non-binary tree merge
-
-// Merge Unit 
-//  --------------------
-//           | 
-//           |
-//  --------------------
-//           |
-//           |
-//  --------------------
 #[derive(Default)]
 pub struct MergeUnit {
     sink: Vec<(i32,i32)>,
     pub root: (i32,i32),
     x_range:(i32,i32),
     y_range:(i32,i32),
-    path: Vec<Path>,
-    if_veritcal:bool,
+    common_length: u32,
+    pub path: Vec<Path>,
+    if_horizontal:bool, // merge unit direction
     pub level : u8,
 }
 
 
 // path can be horizontal, vertical, turning.
-// if turning , always veritcal followed by horizontal
-struct Path {
-    from:(i32,i32),
-    to:(i32,i32),
+#[derive(Debug)]
+pub struct Path {
+    pub from:(i32,i32),
+    pub turn:Option<(i32,i32)>,
+    pub to:(i32,i32),
 }
 
 impl Path {
-    pub fn if_veritcal(&self) -> bool {
-        self.from.0 == self.to.0
-    } 
-    pub fn if_horizontal(&self) -> bool {
-        self.from.1 == self.to.1
-    }
+
     pub fn if_turn(&self) -> bool {
-        self.from.0 != self.to.0 && self.from.1 != self.to.1
-    }
-    pub fn if_invalid(&self) -> bool {
-        self.from.0 == self.to.0 && self.from.1 == self.to.1
+        match self.turn {
+            Some(_) => true,
+            None => false,
+        }
     }
     pub fn length(&self) -> i32 {
         (self.from.0 - self.to.0).abs() + (self.from.1 - self.to.1).abs()
@@ -53,43 +41,65 @@ impl MergeUnit {
     pub fn new() -> Self {
         Default::default()
     }
+    pub fn is_root(&self) -> bool {
+        self.level == 1
+    }
     pub fn length(&self) -> i32 {
         self.path.iter().fold(0,|acc,x|acc + x.length())
     }
     pub fn set_level(&mut self,level:u8) {
         self.level = level;
     }
-    pub fn adjust_root(&mut self,offset:(i32,i32)) {
-        self.root = (self.root.0 + offset.0, self.root.1 + offset.1); 
-    }
-    pub fn range_length(&self) -> u32 {
-        (self.x_range.1 -self.x_range.0 + self.y_range.1 - self.y_range.0) as u32
-    }
-    // in this function , target length is equal to len(x_range) + (y_range).len() after adjustment
-    pub fn adjust_range(&mut self,target_length:u32) {
-        let delta = ((target_length - self.range_length())/4) as i32;
-        if delta > 0{
-           self.x_range = (self.x_range.0 -delta,self.x_range.1 + delta);
-           self.y_range = (self.y_range.0 - delta, self.y_range.1 + delta);
+    pub fn adjust_root(&mut self,margin:u32) {
+        if self.if_horizontal {
+            let new_root = if self.root.1 - self.y_range.0 > self.y_range.1 - self.root.1 {
+                (self.root.0,self.root.1 + margin as i32)
+
+            } else {
+                (self.root.1, self.root.1 + margin as i32)
+            };
+            self.path.push(Path{from:self.root,turn:None,to:new_root});
+            self.root = new_root;
+        } else {
+            let new_root = if self.root.0 - self.x_range.0 > self.x_range.1 - self.root.0 {
+                (self.root.0 - margin as i32, self.root.1)
+            } else {
+                (self.root.0 + margin as i32,self.root.1)
+            };
+            self.path.push(Path{from:self.root,turn:None,to:new_root});
+            self.root = new_root;
         }
-        
     }
+    pub fn common_length(&self) -> u32 {
+        self.common_length
+    }
+    // load sink , analyze range, get root and common length
     pub fn load_sink(&mut self,sink:&[(i32,i32)]) {
         let (mut x_min,mut x_max,mut y_min,mut y_max) = (i32::MAX,i32::MIN,i32::MAX,i32::MIN);
+        let mut lm = (0,0);
+        let mut rm = (0,0);
+        let mut tm = (0,0);
+        let mut bm = (0,0);
         sink.iter().for_each(|d|{
+            // most left
             if d.0 < x_min {
                 x_min = d.0;
+                lm = *d;
             }
+            // most right
             if d.0 > x_max {
                 x_max = d.0;
+                rm = *d;
             }
             // most bottom
             if d.1 < y_min {
                 y_min = d.1;
+                bm = *d;
             }
             // most top
             if d.1 > y_max {
                 y_max = d.1;
+                tm = *d;
             }
             self.sink.push(*d);
         });
@@ -97,238 +107,109 @@ impl MergeUnit {
         self.y_range = (y_min,y_max);
 
         // analyze
-        let range_x_len = x_max - x_min;
-        let range_y_len = y_max - y_min;
-        if range_x_len > range_y_len {
-            self.if_veritcal = true;
-            let delta = range_x_len - range_y_len;
-            let y_extend = (delta / 2) as i32;
-            self.y_range = (self.y_range.0 - y_extend, self.y_range.1 + y_extend);
+        if (self.x_range.0 - self.x_range.1).abs() > (self.y_range.0 - self.y_range.1).abs() {
+            self.if_horizontal = true;
+            self.root = ((lm.0 + rm.0)/2, (lm.1 + rm.1)/2) as (i32,i32);
+            self.common_length = ((lm.0 - self.root.0).abs() + (lm.1 - self.root.1).abs()) as u32;
         } else {
-            self.if_veritcal = false;
-            let delta = range_y_len - range_x_len;
-            let x_extend = (delta / 2) as i32;
-            self.x_range = (self.x_range.0 - x_extend, self.x_range.1 + x_extend);
+            self.if_horizontal = false;
+            self.root = ((bm.0 + tm.0)/2, (bm.1 + tm.1)/2) as (i32,i32);
+            self.common_length = ((bm.0 - self.root.0).abs() + (bm.1 - self.root.1).abs()) as u32;
         }
-        self.root = (((self.x_range.0 + self.x_range.1)/2) as i32, ((self.x_range.0 + self.x_range.1)/2 ) as i32);
     }
+
 
     pub fn merge(&mut self) {
-        // shape:
-        //     --------------
-        //           |
-        //           |
-        //     ------------- 
-        if self.if_veritcal {
-            let mut top_left_offset = self.root.0;
-            let mut top_right_offset = self.root.0;
-            let mut bottom_left_offset = self.root.0;
-            let mut bottom_right_offset = self.root.0;
+        if self.if_horizontal {
             for x in &self.sink {
-                                //                              -------
-                // tap point is only exist on      |
-                //                              -------
-                let mut tap_point = self.root; 
-                // first analysis
-                let (x_offset,y_offset) = (x.0-self.root.0,x.1-self.root.1);
-                // case 1 : at the top-right region of merge unit
-                if x_offset > 0 && y_offset > 0 {
-                    let mismatch = (self.x_range.1 - x.0) - (self.y_range.1 - x.1);
-                    // longer common path 
-                    if mismatch > 0 {
-                            tap_point.1 = self.y_range.1;
-                            tap_point.0 = x.0 + (mismatch/2) as i32;
-                            if tap_point.0 > top_right_offset {
-                                top_right_offset = tap_point.0;
-                            }
-                            // add path from tap point to sink, because vertical first
-                            self.path.push(Path{from:tap_point,to:*x});
-                    }
-                    // shorter common path
-                    else {
-                        tap_point.0 = self.root.0;
-                        tap_point.1 = self.y_range.1 + (mismatch/2) as i32;
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                }  
-                // case 2: at the bottom-right region of merge unit
-                else if x_offset > 0 && y_offset < 0 {
-                    let mismatch = (self.x_range.1 - x.0) - (self.y_range.1 - x.1);
-                    // longer common path
-                    if mismatch > 0 {
-                        tap_point.1 = self.y_range.0;
-                        tap_point.0 = x.0 + (mismatch/2) as i32;
-                        if tap_point.0 > bottom_right_offset {
-                            bottom_right_offset = tap_point.0;
-                        }
-                            // add path from tap point to sink, because vertical first
-                            self.path.push(Path{from:tap_point,to:*x});
-                    } 
-                    // shorter common path
-                    else {
-                        tap_point.0 = self.root.0;
-                        tap_point.1 = self.y_range.0 - (mismatch/2) as i32;
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                }
-                // case 3: at the top-left region of merge unit
-                else if x_offset < 0 && y_offset > 0 {
-                    let mismatch = (x.0 - self.x_range.0) - (self.y_range.1 - x.1);
-                    // longer common path
-                    if mismatch > 0 {
-                        tap_point.1 = self.y_range.1;
-                        tap_point.0 = x.0 - (mismatch/2) as i32;
-                        if tap_point.0 < top_left_offset {
-                            top_left_offset = tap_point.0;
-                        }
-                            // add path from tap point to sink, because vertical first
-                            self.path.push(Path{from:tap_point,to:*x});
-                    }
-                    // shorter common path 
-                    else {
-                        tap_point.0 = self.root.0;
-                        tap_point.1 = self.y_range.1 + (mismatch/2) as i32;
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                }
-                // case 4: at the bottom-left region of merge unit
-                else if x_offset < 0 && y_offset < 0 {
-                    let mismatch = (x.0-self.x_range.0) - (x.1-self.y_range.0);
-                    // longer common path
-                    if mismatch > 0 {
-                        tap_point.1 = self.y_range.0;
-                        tap_point.0 = x.0 - (mismatch)/2 as i32;
-                        if tap_point.0 < bottom_left_offset {
-                            bottom_left_offset = tap_point.0;
-                        }
-                            // add path from tap point to sink, because vertical first
-                            self.path.push(Path{from:tap_point,to:*x});
-                    }
-                    // shorter common path
-                    else {
-
-                        tap_point.0 = self.root.0;
-                        tap_point.1 = self.y_range.0 - (mismatch/2) as i32;
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
+                if x.0 == self.x_range.0 || x.0 == self.x_range.1 {
+                    let turn = (x.0,self.root.1);
+                    self.path.push(Path{from:*x,turn:Some(turn),to:self.root});
+                } else {
+                    let end = (x.0,self.root.1);
+                    self.path.push(Path{from:*x,turn:None,to:end});
                 }
             }
-        self.path.push(Path{from:(top_left_offset,self.y_range.1),to:(top_right_offset,self.y_range.1)});
-        self.path.push(Path{from:(bottom_left_offset,self.y_range.0),to:(bottom_right_offset,self.y_range.1)});
-        self.path.push(Path{from:(self.root.0,self.y_range.1),to:(self.root.0,self.y_range.0)});
+
         } 
-        // shape:
-        //    |                |
-        //    |                |
-        //    | -------------- |
-        //    |                |
-        //    |                |
         else {
-            let mut top_left_offset = self.root.1;
-            let mut top_right_offset = self.root.1;
-            let mut bottom_left_offset = self.root.1;
-            let mut bottom_right_offset = self.root.1;
             for x in &self.sink {
-                let mut tap_point = self.root; 
-                // first analysis
-                let (x_offset,y_offset) = (x.0-self.root.0,x.1-self.root.1);
-                // case 1 : at the top-right region of merge unit
-                if x_offset > 0 && y_offset > 0 {
-                    let mismatch = (self.x_range.1 - x.0) - (self.y_range.1 - x.1);
-                    // longer common path 
-                    if mismatch < 0 {
-                            tap_point.0 = self.x_range.1;
-                            tap_point.1 = x.1 - (mismatch/2) as i32;
-                            if tap_point.1 > top_right_offset {
-                                top_right_offset = tap_point.1;
-                            }
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                    // shorter common path
-                    else {
-                        tap_point.1 = self.root.1;
-                        tap_point.0 = self.x_range.1 - (mismatch/2) as i32;
-                            // add path from tap point to sink, because vertical first
-                            self.path.push(Path{from:tap_point,to:*x});
-                    }
-                }  
-                // case 2: at the bottom-right region of merge unit
-                else if x_offset > 0 && y_offset < 0 {
-                    let mismatch = (self.x_range.1 - x.0) - (self.y_range.1 - x.1);
-                    // longer common path
-                    if mismatch < 0 {
-                        tap_point.0 = self.x_range.1;
-                        tap_point.1 = x.1 + (mismatch/2) as i32;
-                        if tap_point.1 < bottom_right_offset {
-                            bottom_right_offset = tap_point.1;
-                        }
-                        // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    } 
-                    // shorter common path
-                    else {
-                        tap_point.1 = self.root.1;
-                        tap_point.0 = self.x_range.1 - (mismatch/2) as i32;
-                                            // add path from tap point to x, because vertical first
-                        self.path.push(Path{from:tap_point,to:*x});
-                    }
-                }
-                // case 3: at the top-left region of merge unit
-                else if x_offset < 0 && y_offset > 0 {
-                    let mismatch = (x.0 - self.x_range.0) - (self.y_range.1 - x.1);
-                    // longer common path
-                    if mismatch < 0 {
-                        tap_point.0 = self.x_range.0;
-                        tap_point.1 = x.1 - (mismatch/2) as i32;
-                        if tap_point.1 > top_left_offset {
-                            top_left_offset = tap_point.1;
-                        }
-                                                // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                    // shorter common path 
-                    else {
-                        tap_point.1 = self.root.1;
-                        tap_point.0 = self.x_range.0 + (mismatch/2) as i32;
-                                                // add path from tap point to sink, because vertical first
-                        self.path.push(Path{from:tap_point,to:*x});
-                    }
-                }
-                // case 4: at the bottom-left region of merge unit
-                else if x_offset < 0 && y_offset < 0 {
-                    let mismatch = (x.0-self.x_range.0) - (x.1-self.y_range.0);
-                    // longer common path
-                    if mismatch < 0 {
-                        tap_point.0 = self.x_range.0;
-                        tap_point.1 = x.1 + (mismatch)/2 as i32;
-                        if tap_point.1 < bottom_left_offset {
-                            bottom_left_offset = tap_point.1;
-                        }
-                                                // add path from sink to tap point, because vertical first
-                        self.path.push(Path{from:*x,to:tap_point});
-                    }
-                    // shorter common path
-                    else {
-                        tap_point.1 = self.root.1;
-                        tap_point.0 = self.x_range.0 + (mismatch/2) as i32;
-                                                // add path from tap point to sink, because vertical first
-                        self.path.push(Path{from:tap_point,to:*x});
-                    }
+                if x.1 == self.y_range.0 || x.1 == self.y_range.1 {
+                    let turn = (self.root.0,x.1);
+                    self.path.push(Path{from:*x,turn:Some(turn),to:self.root});
+                } else {
+                    let end = (self.root.0,x.1);
+                    self.path.push(Path{from:*x,turn:None,to:end});
                 }
             }
-        self.path.push(Path{from:(top_left_offset,self.x_range.0),to:(bottom_left_offset,self.x_range.0)});
-        self.path.push(Path{from:(top_right_offset,self.x_range.1),to:(bottom_right_offset,self.x_range.1)});
-        self.path.push(Path{from:(self.x_range.0,self.root.1),to:(self.x_range.1,self.root.1)});
+
         }
-        
-        
-        //
     }
+
+//     pub fn merge(&mut self) {
+//         if self.if_horizontal {
+//             for x in &self.sink {
+//                 if x.0 == self.x_range.0 || x.0 == self.x_range.1 {
+//                     let turn = (x.0,self.root.1);
+//                     self.path.push(Path{from:*x,turn:Some(turn),to:self.root});
+//                 } else {
+//                     let sink2root = ((x.0 - self.root.0).abs() + (x.1 - self.root.1).abs()) as u32;
+//                     let delta = self.common_length as i32 - sink2root as i32;
+
+//                     let mut end = x.clone();
+//                     if delta > 0 {
+//                         let extra = delta/2;
+//                         if x.0 <= self.root.0 {
+//                             end.0 -= extra as i32;
+//                             end.1 = self.root.1;
+//                         } else {
+//                             end.0 += extra as i32;
+//                             end.1 = self.root.1;
+//                         }
+//                         let turn = (end.0,x.1);
+//                         self.path.push(Path{from:*x,turn:Some(turn),to:end});
+//                     } else {
+//                         // prepare for new path
+//                         let start = end;
+//                         let end = (start.0,self.root.1);
+//                         self.path.push(Path{from:start,turn:None,to:end});
+//                     }
+
+//                 }
+//             }
+
+//         } 
+//         else {
+//             for x in &self.sink {
+//                 if x.1 == self.y_range.0 || x.1 == self.y_range.1 {
+//                     let turn = (self.root.0,x.1);
+//                     self.path.push(Path{from:*x,turn:Some(turn),to:self.root});
+//                 } else {
+//                     let sink2root = ((x.0 - self.root.0).abs() + (x.1 - self.root.1).abs()) as u32;
+//                     let delta = self.common_length as i32 - sink2root as i32;
+//                     let mut end = x.clone();
+//                     if delta > 0 {
+//                         let extra = delta/2;
+//                         if x.1 <= self.root.1 {
+//                             end.1 -= extra as i32;
+//                             end.0 = self.root.0;
+//                         } else {
+//                             end.1 += extra as i32;
+//                             end.0 = self.root.0;
+//                         }
+//                         let turn = (x.0,end.1);
+//                         self.path.push(Path{from:*x,turn:Some(turn),to:end});
+//                     } else {
+//                         let start = end;
+//                         let end = (self.root.0,start.1);
+//                         self.path.push(Path{from:start,turn:None,to:end});
+//                     }
+
+//                 }
+//             }
+
+
+//         }
+
+// }
 }
-
-
