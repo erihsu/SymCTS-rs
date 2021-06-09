@@ -7,7 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cts-plugin = {git = "https://github.com/erihsu/cts-plugin",rev="3ad3781"}
+cts-plugin = {git = "https://github.com/erihsu/cts-plugin",rev="c9f4275"}
 libloading = "0.5"
 rand = "*"
 serde_json = "*"
+serde_yaml = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+mincost = {git = "https://github.com/erihsu/mincost" ,tag = "v0.0.1" ,features = ["ga"]}
